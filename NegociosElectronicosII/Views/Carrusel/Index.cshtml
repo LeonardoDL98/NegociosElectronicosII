@@ -1,0 +1,69 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Carrusel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Posicion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Texto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ruta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Extension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Texto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ruta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Extension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreArchivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CarruselId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CarruselId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CarruselId })
+        </td>
+    </tr>
+}
+
+</table>

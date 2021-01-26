@@ -1,0 +1,400 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+    <title>Vocho.Net</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Imagenes/favicon.ico">
+    <!-- jQuery -->
+    @*<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>
+    <!-- Bootstrap4 files-->
+    @*<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/bootstrap.bundle.min.js"></script>
+    @*<link href="css/bootstrap.css?v=1.0" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/ui-ecommerce/css/bootstrap.css" rel="stylesheet" />
+    <!-- Font awesome 5 -->
+    @*<link href="fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">*@
+    <link href="~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <!-- plugin: fancybox  -->
+    @*<script src="plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+        <link href="plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">*@
+    <script src="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"></script>
+    <link href="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css" rel="stylesheet" />
+    <!-- code highlighter -->
+    @*<link href="plugins/prism/prism.css" rel="stylesheet">
+        <script src="plugins/prism/prism.js"></script>*@
+    <link href="~/Content/ui-ecommerce/plugins/prism/prism.css" rel="stylesheet" />
+    <script src="~/Content/ui-ecommerce/plugins/prism/prism.js"></script>
+    <!-- custom style -->
+    @*<link href="css/ui.css?v=1.0" rel="stylesheet" type="text/css" />*@
+    <link href="~/Content/ui-ecommerce/css/ui.css" rel="stylesheet" />
+    @*<link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />*@
+    <link href="~/Content/ui-ecommerce/css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <!-- custom javascript -->
+    @*<script src="js/script.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/script.js"></script>
+    @Scripts.Render("~/bundles/ChartJS")
+    
+    @Styles.Render("~/Content/DataTablesCss")
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/Block")
+
+    <script type="text/javascript">
+/// some script
+
+
+
+// copy text
+function copyToClipboard(element) {
+	$("#temp_text").val($(element).text()).select();
+	document.execCommand("copy");
+        }
+
+function llamadomodal() {
+    fnLoader();
+    $("#cambiarpass").load('@Url.Action("Passwoord","ChangePass")', {}, function () {
+        $.unblockUI();
+    });
+}
+
+        function fnLoader() {
+            $.blockUI({
+                message: '<h1><img src="' + '@Url.Content("~/Imagenes/Cargador/loader4.gif")' + '" /></h1>',
+                baseZ: 2147483647,
+                css: {
+                    padding: 0,
+                    margin: 0,
+                    top: ($(window).height() - 400) / 2 + 'px',
+                    left: ($(window).width() - 400) / 2 + 'px',
+                    textAlign: 'center',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    cursor: 'wait'
+                },
+            });
+
+        }
+
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+	// show code script
+
+		$('.code').each(function() {
+		  var that = $(this);
+		  // cache the content of 'code'
+		  var html = that.html().trim();
+		  that.empty();
+		  // escape the content
+		  that.text(html);
+		});
+
+
+	$('.showcode').click(function(e){
+		e.preventDefault();
+
+		var mydata = $(this).attr('data-html');
+		var myhtml = $('#'+mydata).html();
+		$('#loadhere').text(myhtml);
+		Prism.highlightAll();
+
+		$('#mymodal').modal('show');
+
+	});
+
+
+	//////////////////////// Menu scroll to section
+	$('a.page-scroll').click(function(event) {
+		var $anchor = $(this);
+        $('html, body').stop().animate({ scrollTop: $($anchor.attr('href')).offset().top - 40  }, 1500);
+        event.preventDefault();
+    });
+
+	////////////////////////  Highlight the top nav as scrolling occurs. /bootstrap/
+	$('body').scrollspy({
+        target: '#navbar_aside',
+        offset: 80
+    });
+
+	$('.dt').DataTable({
+	    "paging": true,
+	    "pageLength": 5,
+	    //aaSorting: [],
+	    "order": [[1, "asc"]],
+	    "language": {
+	        "emptyTable": "No hay algun registro",
+	        "info": "Mostrando de _START_ a _END_ de _TOTAL_ registros",
+	        "infoEmpty": "Mostrando 0 registros",
+	        "infoFiltered": "(De un total de _MAX_ registros)",
+	        "infoPostFix": "",
+	        "thousands": ",",
+	        "lengthMenu": "Mostrar _MENU_ registros",
+	        "loadingRecords": "Cargando...",
+	        "processing": "Procesando...",
+	        "search": "Buscar: ",
+	        "zeroRecords": "No se encontro ningun registro",
+	        "paginate": {
+	            "first": "Primera",
+	            "last": "Ultima",
+	            "next": "Siguiente",
+	            "previous": "Anterior"
+	        },
+	        "aria": {
+	            "sortAscending": ":Ordenar la columna de forma ascendente",
+	            "sortDescending": ":Ordenar la columna de forma descendente"
+	        }
+	    }
+	});
+
+});
+// jquery end
+    </script>
+    <style type="text/css">
+        pre {
+            max-height: 30rem;
+            overflow: auto;
+            width: 100%;
+            white-space: pre-wrap;
+            white-space: pre-line;
+        }
+
+        .slogan {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .logo {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 7px;
+        }
+
+        .btn-purple {
+            background-color: #5D3C90;
+            color: #fff;
+        }
+
+            .btn-purple:hover {
+                background-color: #654598;
+                color: #fff;
+            }
+
+        /* body{padding-top: 4.5rem; } */
+
+        .aside-header {
+            height: 53px;
+            background: var(--purple);
+            padding: 7px 15px;
+            color: #fff;
+        }
+
+            .aside-header .title {
+                line-height: 1.2;
+            }
+
+        .menu-aside {
+            list-style: none;
+            padding: 0;
+            margin-top: 7px;
+        }
+
+            .menu-aside li a {
+                padding: 10px 15px;
+                display: block;
+                color: #333;
+            }
+
+                .menu-aside li a.active {
+                    color: var(--blue);
+                    font-weight: 500;
+                }
+
+                .menu-aside li a:hover {
+                    background-color: #f2f2f2;
+                }
+
+        .main-content {
+            padding: 15px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .aside-content {
+            overflow-y: auto;
+            height: 100%;
+            background: #fff;
+        }
+
+        .title-doc {
+            font-size: 36px;
+            margin-top: 60px;
+            font-weight: 300;
+            margin-bottom: 0;
+        }
+
+        .subtitle-doc {
+            font-size: 13px;
+            color: #999;
+            font-weight: 400;
+            display: inline-block;
+            padding-bottom: 5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            margin-top: 45px;
+        }
+
+            .subtitle-doc a {
+                padding-left: 10px;
+                color: #666;
+            }
+
+                .subtitle-doc a:hover {
+                    color: blue;
+                }
+
+        .btn-getcode {
+            padding: 3px 7px;
+            font-size: 12px;
+            background-color: orange;
+            color: #fff;
+            float: right;
+        }
+
+        .aside-wrap {
+            background-color: #fff;
+            border-right: 1px solid rgba(0,0,0,.05);
+        }
+
+        @@media (min-width:768px) {
+            .aside-content {
+                display: block !important;
+            }
+
+            .aside-wrap {
+                position: -webkit-sticky;
+                position: sticky;
+                height: calc(100vh - 53px);
+                z-index: 1000;
+                top: 0;
+            }
+
+            .main-content {
+                padding: 60px;
+                max-width: 1280px;
+            }
+        }
+        /* media */
+    </style>
+</head>
+<body class="bg">
+
+
+    <div class="row no-gutters">
+        <!-- ========================= SECTION CONTENT ========================= -->
+        <aside class="aside-wrap col-md-3 col-lg-2">
+            <header class="aside-header">
+                <a class="float-right d-md-none btn" type="button" data-toggle="collapse" data-target="#navbar_aside">
+                    <i class="fa fa-bars white fa-lg"></i> &nbsp  @Recursos.CategoriaId
+                </a>
+                <h6 class="title">@Settings.LoggedUser.Nombre @Settings.LoggedUser.ApellidoPaterno <br> <small>Vocho.net</small></h6>
+
+            </header>
+            <div class="aside-content collapse" id="navbar_aside">
+                <nav class="menu-wrap">
+                    <ul class="menu-aside">
+
+
+                        <div class="list-group">
+                            <article class="list-group-item">
+                                <header class="filter-header">
+                                    <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" class="collapsed">
+                                        Mi Cuenta
+                                        <i class="icon-action fa fa-chevron-down">  </i>
+                                        <h6 class="title"> </h6>
+                                    </a>
+                                </header>
+                                <div class="filter-content collapse" id="collapse1" style="">
+                                    <button class="dropdown-item" onclick="llamadomodal()">@Recursos.CambiarPass</button>
+                                    <a class="dropdown-item" href="@Url.Action("LogOut","Login")">@Recursos.CerrarSes</a>
+                                </div> <!-- collapse -filter-content  .// -->
+                                <!-- Button trigger modal -->
+                            </article>
+                        </div> <!-- list-group.// -->
+
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Vehiculo")">@Recursos.Vehiculos</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Producto")">@Recursos.Articulos</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Usuario")">@Recursos.User</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Estadistica")">@Recursos.Estadist</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Carrusell")">@Recursos.Carruse</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","FAQS")">FAQS</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Bitacora")">@Recursos.Bitac</a> </li>
+                    </ul>
+                </nav>
+                <hr>
+                <div class="aside-bottom p-3 text-center">
+                    
+                </div> <!-- aside-bottom.// -->
+            </div><!--  aside-contant -->
+        </aside>
+        <main class="main-wrap col-md-9 col-lg-10">
+            
+            <div class="main-content">
+                <!-- ============ main content inner start ============ -->
+
+                <section>
+                    @RenderBody()
+                </section>
+
+
+                @*<div class="jumbotron">
+                    <section>
+                        @RenderBody()
+                    </section>
+
+                </div>*@
+                <!-- ============ main content inner .end ============ -->
+            </div> <!-- main content.// -->
+            
+            <!-- ========================= SECTION FOOTER ========================= -->
+            <footer class="doc-section-footer text-center p-3 bg-secondary " id="page_footer">
+                <p style="color:white">@Recursos.Bocho</p>  <br>
+            </footer>
+            <!-- ========================= SECTION FOOTER END // ========================= -->
+        </main> <!-- main-wrap .// -->
+    </div> <!-- row.// -->
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" id="mymodal" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Source code</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        &times
+                    </button>
+                </div>
+                <div class="modal-body">
+<pre class="relative">
+<button class="btn btn-sm btn-primary absolute" style="top:0; right:0" onclick="copyToClipboard('#loadhere')"> copy </button>
+<code class="language-html" id="loadhere">
+</code>
+</pre>
+                    <textarea id="temp_text" style="height:0px; width:0px; opacity: 0"></textarea>
+                </div>
+            </div>
+        </div>
+    </div> <!-- modal.// -->
+    <!-- Modal -->
+    <div id="cambiarpass">
+
+    </div> 
+</body>
+</html>
+

@@ -1,0 +1,195 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_ListaDeDeseos>
+@{
+    ViewBag.Title = "ListaDeDeseos";
+    Layout = "~/Views/Shared/_PrincipalLayout.cshtml";
+}
+<br />
+<h2>Lista De Deseos</h2>
+<br />
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg padding-y border-top">
+    <div class="container">
+
+        <div class="row">
+            <main class="col-sm-9">
+
+                <div class="card">
+                    <table class="table table-hover shopping-cart-wrap">
+                        <thead class="text-muted">
+                            <tr>
+                                <th scope="col">Productos</th>
+                                <th scope="col" width="120">Cantidad</th>
+                                <th scope="col" width="120">Precio</th>
+                                <th scope="col" class="text-right" width="200">Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Settings.LoggedUser != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <figure class="media">
+                                                @if (item.ProductoId == null)
+                                                {
+                                                    <div class="img-wrap"><img src="@Url.Content("~/Imagenes/Vehiculo/" +@item.NE_Vehiculo.NE_VehiculoImagen.First().Nombre+@item.NE_Vehiculo.NE_VehiculoImagen.First().Extension)" class="img-thumbnail img-sm"></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="img-wrap"><img src="@Url.Content("~/Imagenes/Productos/" +@item.NE_Producto.NE_ProductoImagen.First().Nombre+@item.NE_Producto.NE_ProductoImagen.First().Extension)" class="img-thumbnail img-sm"></div>
+                                                }
+
+                                                <figcaption class="media-body">
+                                                    @if (item.ProductoId == null)
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Vehiculo.NombreVehiculo </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Marca.Marca</dd>
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Color.Color</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Categoria: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Categoria.Categoria</dd>
+                                                            <dt>Transmisión: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Transmision.Transmision</dd>
+                                                        </dl>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Producto.Nombre </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Producto.NE_Marca.Marca</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Producto.NE_Color.Color</dd>
+                                                        </dl>
+                                                    }
+
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <select class="form-control">
+                                                @if (item.VehiculoId == null)
+                                                {
+                                                    if (item.NE_Producto.Stock > 0)
+                                                    {
+                                                        for (int i = 0; i < item.NE_Producto.Stock; i++)
+                                                        {
+                                                            <option>@(i + 1)</option>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <option>0</option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option>1</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            @if (item.ProductoId == null)
+                                            {
+                                                if (item.NE_Vehiculo.MarcarComoOferta)
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioOFerta)</span>
+                                                    <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (item.NE_Producto.MarcarComoOferta)
+                                                {
+                                                    <var class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioOFerta)</var>
+                                                    <del class="price-old">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</del>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
+
+                                                }
+                                            }
+                                        </td>
+                                        <td class="text-right">
+                                            @if (item.ProductoId == null)
+                                            {
+                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarDeseado(@item.VehiculoId,1)"> × Remove</button>
+                                            }
+                                            else
+                                            {
+                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.ProductoId" onclick="agregar(@item.ProductoId,2,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarDeseado(@item.ProductoId,2)"> × Remove</button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <h3>No hay productos en la Lista de Deseados</h3>
+
+                            }
+                        </tbody>
+                    </table>
+                </div> <!-- card.// -->
+
+            </main> <!-- col.// -->
+            
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<script type="text/javascript">
+
+     function agregar(nuevo, cons, lug) {
+        $.ajax({
+            url: '@Url.Action("AgregarCarro", "Carrito")',
+            data: { id: nuevo, constante: cons, lugar:lug },
+            type: 'POST',
+            success: function (response) {
+                 window.location.href = '@Url.Action("ListaDeDeseos","Principal")';
+                 alert(response.Message);
+                 RefrescarDeseos();
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+    function eliminarDeseado(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("EliminarDeseado", "ListaDeseos")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    window.location.href = '@Url.Action("ListaDeDeseos","Principal")';
+                    RefrescarDeseos();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+</script>

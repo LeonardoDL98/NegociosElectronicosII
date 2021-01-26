@@ -1,0 +1,146 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PrincipalLayout.cshtml";
+}
+
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-main bg padding-y-sm">
+    <div class="container" id="ejemplo">
+    Cargando...
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION ITEMS ========================= -->
+<section class="section-request bg padding-y-sm">
+    <div class="container" id="_GridVehiculo">
+        Cargando...
+    </div>
+</section>
+<!-- ========================= SECTION ITEMS .END// ========================= -->
+
+
+
+<!-- ========================= SECTION ITEMS ========================= -->
+<section class="section-request bg padding-y-sm">
+    <div class="container" id="_GridProducto">
+        Cargando...
+    </div>
+</section>
+<!-- ========================= SECTION ITEMS .END// ========================= -->
+
+
+<!-- ========================= SECTION SUBSCRIBE ========================= -->
+<section class="section-subscribe bg-secondary padding-y-lg">
+    <div class="container">
+
+        <p class="pb-2 text-center white">Si tienes alguna duda, sugerencia y/o comentario, escribenos aqui.</p>
+
+        <div class="row justify-content-md-center">
+            <div class="col-lg-4 col-sm-6">
+                <div class="row-sm form-noborder">
+                    <div class="col-12">
+                        <input class="form-control" id="email" placeholder="Coloca aqui tu correo, para poder contactarte" type="email" value="@(Settings.LoggedUser == null ? String.Empty : Settings.LoggedUser.CorreoElectronico)" >
+                        <br />
+                    </div> <!-- col.// -->
+                    <div class="col-12">
+                        <textarea id="comentario" class="form-control" placeholder="Escribe aqui"></textarea>
+                    <br />
+                    </div> <!-- col.// -->
+                    <div class="col-12 text-center">
+                        <button type="button" id="btnEnviarEmail" class="btn btn-block btn-warning"> 
+                            <i class="fa fa-envelope"></i>
+                                Enviar
+                        </button>
+                    </div>
+                </div>
+                <small class="form-text text-white-50">Nunca compartiremos tu correo con terceras partes. </small>
+            </div> <!-- col-md-6.// -->
+        </div>
+
+
+    </div> <!-- container // -->
+</section>
+<div id="modalproductos">
+
+</div>
+<!-- ========================= SECTION SUBSCRIBE END.//========================= -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CategoriasParcial").html('Cargando...');
+        $("#CategoriasParcial").load("@Url.Action("ComboDeCatergoriasParcial", "Base")");
+        $("#ContenedorBusqueda").load("@Url.Action("BusquedaParcial", "Base")");
+        
+        $("#ejemplo").load("@Url.Action("CarruselParcial","Principal")");
+        $("#_GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
+        $("#_GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
+
+        $('#btnEnviarEmail').click(function () {
+            var email = $('#email').val();
+            var comentario = $('#comentario').val();
+
+            if (email == null || email == undefined || email == "")
+            {
+                alert('Complete el campo email');
+                return;
+            }
+
+            if (comentario == null || comentario == undefined || comentario == "") {
+                alert('Complete el campo comentario');
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("EnviarComentarios", "Principal")',
+                data: { email: email, comentario: comentario },
+                type: 'POST',
+                success: function (response) {
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        });
+    });
+
+    function fnChangeCategoryMain(CategoryId,Categoria)
+    {
+        $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Categoria: CategoryId }, function () {
+            @if (Settings.LoggedUser != null) { 
+                @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la categoria ' + Categoria,12);
+            }
+            fnPintarGridDeVehiculos(1);
+        });
+    }
+
+    function fnChangeMarksMain(MarcaId,Marca)
+    {
+        $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Marca: MarcaId }, function () {
+             @if (Settings.LoggedUser != null) { 
+                @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la marca ' + Marca,13);
+            }
+            fnPintarGridDeVehiculos(1);
+        });
+    }
+
+    function fnBusqueda()
+    {
+        var busqueda = $('#txtSearch').val();
+        fnPintarGridDeVehiculos(1, busqueda);
+        fnPintarGridDeArticulos(1, busqueda);
+    }
+
+    function detallesproductos(id, tipo) {
+        fnLoader();
+        $("#modalproductos").load("@Url.Action("Detalles","DetallesProducto")", { idprod: id, tipoprod: tipo }, function () {
+            $.unblockUI();
+        });
+    }
+
+    //public fn
+
+</script>

@@ -1,0 +1,41 @@
+﻿@{ 
+    List<System.Web.Mvc.SelectListItem> Fechas = (List<System.Web.Mvc.SelectListItem>)ViewBag.Fechas;
+}
+<div class="card">
+    <header class="card-header">
+        <h4 class="card-title mt-2">Ventas Anuales</h4>
+    </header>
+    <article class="card-body" >
+        <label>Año</label>
+        <select class="form-control" id="ddVentasAnuales">
+            @foreach (var item in Fechas)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </article><br />
+    <article class="card-body" id="GraficoAnual">
+    </article> <!-- card-body end .// -->
+    <div class="border-top card-body text-center">
+
+    </div>
+</div> 
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_MostrarVentasAnualesDetalleParcial(@DateTime.Now.Year);
+
+        $('#ddVentasAnuales').change(function () {
+            Cargar_MostrarVentasAnualesDetalleParcial($(this).val());
+        });
+    });
+
+    function Cargar_MostrarVentasAnualesDetalleParcial(Anio)
+    {
+        $('#GraficoAnual').empty();
+        $('#GraficoAnual').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#GraficoAnual').load('@Url.Action("MostrarVentasAnualesDetalle", "Estadistica")', { Anio: Anio }, function () {
+        });
+    }
+</script>
+

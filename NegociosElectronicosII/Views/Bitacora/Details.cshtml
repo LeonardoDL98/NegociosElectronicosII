@@ -1,0 +1,50 @@
+﻿@model NegociosElectronicosII.Models.NE_Bitacora
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NE_Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaDeRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaDeRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Accion.Accion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Accion.Accion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Usuario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Usuario.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BitacoraId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

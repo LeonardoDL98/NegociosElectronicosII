@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_FAQS>
+
+@{
+    ViewBag.Title = "FaqsPrincipal";
+    Layout = "~/Views/Shared/_PrincipalLayout.cshtml";
+}
+
+<h2>Preguntas Frecuentes</h2>
+<br /><br />
+<div class="accordion" id="accordionExample">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#coll_@item.FAQId" aria-expanded="true" aria-controls="collapseOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" >
+                        @item.Pregunta
+                    </button>
+                </h2>
+            </div>
+
+            <div id="coll_@item.FAQId" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    @item.Respuesta   
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

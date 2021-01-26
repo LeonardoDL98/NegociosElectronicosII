@@ -1,0 +1,268 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+
+    <title>Venta de autos </title>
+
+    @*<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">*@
+    <link rel="shortcut icon" type="image/x-icon" src="~/Content/ui-ecommerce/images/favicon.ico" />
+
+    <!-- jQuery -->
+    @*<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>
+
+    <!-- Bootstrap4 files-->
+    @*<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />*@
+    <script src="~/Content/ui-ecommerce/js/bootstrap.bundle.min.js"></script>
+    <link href="~/Content/ui-ecommerce/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Font awesome 5 -->
+    @*<link href="fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">*@
+    <link href="~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+
+    <!-- plugin: fancybox  -->
+    @*<script src="plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+        <link href="plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">*@
+    <link href="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css" rel="stylesheet" />
+    <script src="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"></script>
+
+    <!-- plugin: owl carousel  -->
+    @Styles.Render("~/Content/CarouselCSS")
+    @Scripts.Render("~/bundles/CarouselJS")
+
+    <!-- custom style -->
+    @*<link href="css/ui.css" rel="stylesheet" type="text/css" />
+        <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />*@
+    <link href="~/Content/ui-ecommerce/css/ui.css" rel="stylesheet" />
+    <link href="~/Content/ui-ecommerce/css/responsive.css" rel="stylesheet" />
+
+    <!-- custom javascript -->
+    @Scripts.Render("~/bundles/CustomJs")
+    @Scripts.Render("~/bundles/Block")
+    
+
+    @*@Styles.Render("~/Content/principalCSS")
+    @Scripts.Render("~/bundles/principalJS")*@
+    <script type="text/javascript">
+        /// some script
+
+        // jquery ready start
+        $(document).ready(function () {
+            // jQuery code
+
+        });
+// jquery end
+    </script>
+
+</head>
+<body>
+    <header class="section-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index","Principal")">
+                    <img class="logo" src="@(Url.Content("~/Imagenes/logoAuto.png"))" alt="alibaba style e-commerce html template file" title="alibaba e-commerce html css theme">
+                </a>
+                @*<a class="navbar-brand" href="#"><img class="logo" src="images/logos/logo-alibaba.png" alt="alibaba style e-commerce html template file" title="alibaba e-commerce html css theme"></a>*@
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTop">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (Settings.LoggedUser != null)
+                        {
+                            <li class="nav-item"><a href="#" class="nav-link"> 
+                                @Settings.LoggedUser.Nombre  
+                                @Settings.LoggedUser.ApellidoPaterno 
+                                </a>
+                            </li>
+                            <li class="nav-item"><a href="@Url.Action("LogOut","Login")" class="nav-link"> Cerrar Sesion </a></li>
+                        }
+                        
+
+                    </ul> <!-- navbar-nav.// -->
+                </div> <!-- collapse.// -->
+            </div>
+        </nav>
+
+        <section class="header-main shadow-sm">
+            <div class="container">
+                <div class="row-sm align-items-center">
+                    <div class="col-lg-4-24 col-sm-3" id="CategoriasParcial">
+                    </div>
+                    <div class="col-lg-11-24 col-sm-8" id="ContenedorBusqueda">
+
+                    </div> <!-- col.// -->
+                    <div class="col-lg-9-24 col-sm-12">
+                        <div class="widgets-wrap float-right row no-gutters py-1">
+                            <div class="col-auto">
+                                <div class="widget-header dropdown">
+                                    <a href="#" data-toggle="dropdown" data-offset="20,10">
+                                        <div class="icontext">
+                                            <div class="icon-wrap"><i class="text-warning icon-sm fa fa-user"></i></div>
+                                            <div class="text-wrap text-dark">
+                                                Mi Cuenta <br> <i class="fa fa-caret-down"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <hr class="dropdown-divider">
+                                        @if (Settings.LoggedUser != null)
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("LogOut", "Login")">Cerrar sesion</a>
+                                            @*<a class="dropdown-item" href="@Url.Action("Pedidos", "Principal")">Mis pedidos</a>*@
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("Index", "Login")">@Recursos.InicioSesion</a>
+                                            <a class="dropdown-item" href="@Url.Action("Create", "Registro")">@Recursos.Registrate</a>
+                                        }
+                                    </div> <!--  dropdown-menu .// -->
+                                </div>  <!-- widget-header .// -->
+                            </div> <!-- col.// -->
+                            <div class="col-auto" id="CarritoParcial">
+                              
+                            </div> <!-- col.// -->
+                            <div class="col-auto" id="ListaDeseosParcial">
+                               
+                            </div> <!-- col.// -->
+                        </div> <!-- widgets-wrap.// row.// -->
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- container.// -->
+        </section> <!-- header-main .// -->
+    </header> <!-- section-header.// -->
+
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            @RenderBody()
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <br />
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer bg-secondary">
+        <div class="container">
+            <section class="footer-top padding-top">
+                <div class="row">
+                    <aside class="col-sm-3 col-md-3 white">
+                        <h5 class="title">Atencion al cliente</h5>
+                        <ul class="list-unstyled">
+                            <li> <a href="@Url.Action("FaqsPrincipal","Principal")">Preguntas frecuentes (FAQS)</a></li>
+                            <li> <a href="@Url.Action("Index","Chat")">Chat</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-3 white">
+                        <h5 class="title">Mi cuenta</h5>
+                        <ul class="list-unstyled">
+                            <li> <a href="@Url.Action("Index","Login")"> Iniciar sesion</a></li>
+                            <li> <a href="@Url.Action("Create","Login")"> Registrate </a></li>
+                            @if (Settings.LoggedUser != null)
+                            {
+                            <li> <a href="@Url.Action("MiCuenta", "Login")"> Configuracion de mi cuenta </a></li>
+                            <li> <a href="@Url.Action("CarritoDeCompras","Carrito")"> Carrito de compras </a></li>
+                            <li> <a href="@Url.Action("ListaDesplegable","ListaDeDeseos")"> Lista de deseos </a></li>
+                            }
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3  col-md-3 white">
+                        <h5 class="title">Acerca de nosotros</h5>
+                        <ul class="list-unstyled">
+                            <li> <a href="@Url.Action("Index","Landing")"> Mas acerca de nosotros...</a></li>
+                        </ul>
+                    </aside>
+                    <aside class="col-sm-3">
+                        <article class="white">
+                            <h5 class="title">Contactanos</h5>
+                            <p>
+                                <strong>Telefono: </strong> 4495874127 <br>
+                                <strong>Email:</strong> soldvocho.net@gmail.com
+                            </p>
+
+                            <div class="btn-group white">
+                                <a class="btn btn-facebook" title="Facebook" target="_blank" href="#"><i class="fab fa-facebook-f  fa-fw"></i></a>
+                                <a class="btn btn-instagram" title="Instagram" target="_blank" href="#"><i class="fab fa-instagram  fa-fw"></i></a>
+                                <a class="btn btn-youtube" title="Youtube" target="_blank" href="#"><i class="fab fa-youtube  fa-fw"></i></a>
+                                <a class="btn btn-twitter" title="Twitter" target="_blank" href="#"><i class="fab fa-twitter  fa-fw"></i></a>
+                            </div>
+                        </article>
+                    </aside>
+                </div> <!-- row.// -->
+                <br>
+            </section>
+            <section class="footer-bottom row border-top-white">
+                <div class="col-sm-6">
+                    <p class="text-white-50"> Instituto Teconologico de Aguascalientes <br>  Negocios Electronicos II</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="text-md-right text-white-50">
+                          <br>
+                        <a href="http://bootstrap-ecommerce.com" class="text-white-50"></a>
+                    </p>
+                </div>
+            </section> <!-- //footer-top -->
+        </div><!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+    <!-- ========================= Script principal // ========================= -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            RefrescarDeseos();
+            RefrescarCarrito();
+
+        });
+
+        function fnLoader() {
+            $.blockUI({
+                message: '<h1><img src="' + '@Url.Content("~/Imagenes/Cargador/loader4.gif")' + '" /></h1>',
+                baseZ: 2147483647,
+                css: {
+                    padding: 0,
+                    margin: 0,
+                    top: ($(window).height() - 400) / 2 + 'px',
+                    left: ($(window).width() - 400) / 2 + 'px',
+                    textAlign: 'center',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    cursor: 'wait'
+                },
+            });
+        }
+
+        function RefrescarCarrito() {
+             $("#CarritoParcial").empty();
+             $("#CarritoParcial").load("@Url.Action("CarritoDesplegable", "Carrito")");
+        }
+
+        function RefrescarDeseos() {
+             $("#ListaDeseosParcial").empty();
+             $("#ListaDeseosParcial").load("@Url.Action("ListaDesplegable", "ListaDeseos")");
+        }
+
+        function RegistrarEnBitacora(texto, acciondId) {
+                $.ajax({
+                    url: '@Url.Action("RegistroBitacora", "Base")',
+                    data: { texto: texto, AccionId: acciondId },
+                    type: 'POST',
+                    success: function (response) {
+                    },
+                    error: function () {
+                        alert('Error');
+                    }
+                });
+        }
+
+    </script>
+
+    <!-- ========================= Script principal END // ========================= -->
+
+</body>
+</html>
+

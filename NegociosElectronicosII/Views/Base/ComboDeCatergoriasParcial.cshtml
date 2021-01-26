@@ -1,0 +1,13 @@
+﻿@model List<NegociosElectronicosII.Models.NE_Categoria>
+
+<div class="category-wrap dropdown py-1">
+    <button type="button" class="btn btn-light  dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Categorias(Autos) </button>
+    <div class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item category-main" href="#" onclick="fnChangeCategoryMain(@item.CategoriaId, '@item.Categoria')"> @item.Categoria</a>
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,203 @@
+﻿@model NegociosElectronicosII.Models.DetallesModal
+<div class="modal fade" id="detallemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="card">
+                <div class="row no-gutters">
+                    <aside class="col-sm-5 border-right">
+                        <article class="gallery-wrap">
+                            <div class="img-big-wrap">
+                                <div> 
+                                    @if (Model.tipo == 1)
+                                    {
+                                        foreach (var item in Model.vehiculo.NE_VehiculoImagen)
+                                        {
+                                            <a class="imagenOculta" id="imagen_@item.Nombre" style="@(item.Nombre!= Model.vehiculo.NE_VehiculoImagen.First().Nombre?"display:none": String.Empty)" href="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" data-fancybox="" >
+                                                <img src="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" />
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (var item in Model.producto.NE_ProductoImagen)
+                                        {
+                                            <a class="imagenOculta" id="imagen_@item.Nombre" style="@(item.Nombre!= Model.producto.NE_ProductoImagen.First().Nombre?"display:none": String.Empty)" href="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" data-fancybox="">
+                                                <img src="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" />
+                                            </a>
+                                        }
+                                    }
+                                    
+                                </div>
+                            </div> <!-- slider-product.// -->
+                            <div class="img-small-wrap">
+                            @if (Model.tipo == 1)
+                            {
+                                foreach (var item in Model.vehiculo.NE_VehiculoImagen)
+                                {
+                                    <div class="item-gallery">
+                                        <img src="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" onclick="fnMostrarImagen('@item.Nombre')" />
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in Model.producto.NE_ProductoImagen)
+                                {
+                                    <div class="item-gallery">
+                                        <img src="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" onclick="fnMostrarImagen('@item.Nombre')" />
+                                    </div>
+                                }
+                            }
+                            </div> <!-- slider-nav.// -->
+                        </article> <!-- gallery-wrap .end// -->
+                    </aside>
+                    <aside class="col-sm-7">
+                        <article class="p-5">
+                            @if (Model.tipo == 1)
+                            {
+                                <h3 class="title mb-3">@Model.vehiculo.NombreVehiculo</h3>
+                            }
+                            else
+                            {
+                                <h3 class="title mb-3">@Model.producto.Nombre</h3>
+                            }
+
+                            <div class="mb-3">
+                                <var class="price h3 text-warning">
+                                    @if (Model.tipo == 1)
+                                    {
+                                        <span class="currency">MX $</span>
+                                        if (Model.vehiculo.MarcarComoOferta)
+                                        {
+                                            <span class="price-new">@String.Format("{0:C2}", Model.vehiculo.PrecioOFerta)</span>
+                                            <br />
+                                            <del class="price-old">@String.Format("{0:C2}", Model.vehiculo.PrecioVenta)</del>
+                                        }
+                                        else
+                                        {
+                                            <span class="price-new">@String.Format("{0:C2}", Model.vehiculo.PrecioVenta)</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="currency">MX $</span>
+                                        if (Model.producto.MarcarComoOferta)
+                                        {
+                                            <span class="price-new">@String.Format("{0:C2}", Model.producto.PrecioOFerta)</span>
+                                            <br />
+                                            <del class="price-old">@String.Format("{0:C2}", Model.producto.PrecioVenta)</del>
+                                        }
+                                        else
+                                        {
+                                            <span class="price-new">@String.Format("{0:C2}", Model.producto.PrecioVenta)</span>
+                                        }
+                                    }
+                                </var>
+                            </div> <!-- price-detail-wrap .// -->
+                            <dl>
+                                <dt>Description</dt>
+                                <dd>
+                                    @if (Model.tipo == 1)
+                                    {
+                                        <p>
+                                            @Model.vehiculo.Descripcion
+                                        </p>
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                            @Model.producto.Descripcion
+                                        </p>
+                                    }
+                                </dd>
+                            </dl>
+                            <dl class="row">
+
+                                @if (Model.tipo == 1)
+                                {
+                                    <dt class="col-sm-3">Modelo</dt>
+                                    <dd class="col-sm-9">@Model.vehiculo.Modelo</dd>
+                                    <dt class="col-sm-3">Marca</dt>
+                                    <dd class="col-sm-9">@Model.vehiculo.NE_Marca.Marca</dd>
+                                    <dt class="col-sm-3">Categoria</dt>
+                                    <dd class="col-sm-9">@Model.vehiculo.NE_Categoria.Categoria</dd>
+                                    <dt class="col-sm-3">Transmision</dt>
+                                    <dd class="col-sm-9">@Model.vehiculo.NE_Transmision.Transmision</dd>
+                                    <dt class="col-sm-3">Color</dt>
+                                    <dd class="col-sm-9">@Model.vehiculo.NE_Color.Color</dd>
+                                }
+                                else
+                                {
+                                    <dt class="col-sm-3">Marca</dt>
+                                    <dd class="col-sm-9">@Model.producto.NE_Marca.Marca</dd>
+                                    <dt class="col-sm-3">Color</dt>
+                                    <dd class="col-sm-9">@Model.producto.NE_Color.Color</dd>
+                                    <dt class="col-sm-3">Stock</dt>
+                                    <dd class="col-sm-9">@Model.producto.Stock</dd>
+                                }
+                            </dl>
+
+                            <div class="rating-wrap">
+                                <ul class="rating-stars">
+                                    <li style="width:80%" class="stars-active">
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </li>
+                                </ul>
+                                <div class="label-rating">132 reviews</div>
+                                <div class="label-rating">154 orders </div>
+                            </div> <!-- rating-wrap.// -->
+                            <hr>
+                            <hr>
+                            @if (Model.tipo == 1)
+                            {
+                               
+                                    <button class="btn btn-warning" type="submit" id="btn_@Model.vehiculo.VehiculoId" value="@Model.vehiculo.VehiculoId" onclick="agregar(@Model.vehiculo.VehiculoId,1)">
+                                        <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                                    </button>
+                                    <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@Model.vehiculo.VehiculoId" onclick="agregarDeseo(@Model.vehiculo.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                            }
+                            else
+                            {
+                                
+                                    <button class="btn btn-warning" type="submit" id="btn_@Model.producto.ProductoId" value="@Model.producto.ProductoId" onclick="agregar(@Model.producto.ProductoId,2)">
+                                        <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                                    </button>
+                                
+                                    <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@Model.producto.ProductoId" onclick="agregarDeseo(@Model.producto.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                               
+                            }
+                            </article> <!-- card-body.// -->
+                    </aside> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- card.// -->
+
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#detallemodal").modal("show");
+    });
+
+    function fnMostrarImagen(nombre)
+    {
+        $('.imagenOculta').hide();
+        $('#imagen_'+ nombre).show();
+    }
+</script>

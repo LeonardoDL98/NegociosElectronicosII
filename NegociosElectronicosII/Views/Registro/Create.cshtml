@@ -1,0 +1,116 @@
+﻿@model NegociosElectronicosII.Models.NE_Usuario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+
+<style>
+    .card {
+        height: 800px;
+        margin-top: 105px;
+        margin-bottom: auto;
+        width: 600px;
+        background-color: rgb(174, 214, 241) !important;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="card">
+        <header class="card-header">
+            <div class="form-row">
+                <div class="col form-group">
+
+                    <h4 class="card-title mt-2">Regístrate</h4>
+                </div>
+                <div class="col form-group">
+                    <a href="@Url.Action("Index","Principal")" class="float-right btn btn-outline-primary mt-1">@Recursos.Regresar</a>
+                    </div>
+            </div>
+</header>
+        <article class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.ApellidoPaterno, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.ApellidoPaterno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApellidoPaterno, "", new { @class = "text-danger" })
+
+                    </div>
+                </div> <!-- form-row end.// -->
+                <div class="form-row">
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.ApellidoMaterno, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.ApellidoMaterno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ApellidoMaterno, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.SexoId, "SexoId", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("SexoId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SexoId, "", new { @class = "text-danger" })
+                    </div>
+                </div> <!-- form-row end.// -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.Edad, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edad, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col form-group">
+                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                    </div>
+                </div> <!-- form-row end.// -->
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CorreoElectronico, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.CorreoElectronico, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CorreoElectronico, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @Type = "password" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+                @Html.HiddenFor(m => m.Activo, new { @Value = true })
+                @Html.HiddenFor(m => m.RolId, new { @Value = 4 })
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 ">
+                        <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+                <small class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al hacer clic en el botón 'Registrarse', confirma que acepta nuestros </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Términos de uso y Política de privacidad.</font></font></small>
+            </form>
+        </article> <!-- card-body end .// -->
+        <div class="border-top card-body text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Tienes una cuenta? </font></font><a href=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Html.ActionLink("Iniciar Sesión", "Index", "Login")</font></font></a></div>
+    </div> <!-- card.// -->
+}
+
+<script type="text/javascript">
+    @if (!String.IsNullOrEmpty(ViewBag.Message))
+    {
+       
+        @:alert('@ViewBag.Message');
+
+    }
+</script>
+

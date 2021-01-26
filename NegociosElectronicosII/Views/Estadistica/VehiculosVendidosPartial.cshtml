@@ -1,0 +1,58 @@
+﻿
+@{
+    List<System.Web.Mvc.SelectListItem> anios = (List<System.Web.Mvc.SelectListItem>)ViewBag.Anios;
+    List<System.Web.Mvc.SelectListItem> meses = (List<System.Web.Mvc.SelectListItem>)ViewBag.Meses;
+}
+
+<div class="card border-left-primary shadow h-100 py-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Vehiculos vendidos</div>
+            </div>
+            <div class="col-md-12">
+                <label>Mes</label>
+                <select class="form-control" id="MesesVehiculosVendidos">
+                    @foreach (var item in meses)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label>Anios</label>
+                <select class="form-control" id="AniosVehiculosVendidos">
+                    @foreach (var item in anios)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" id="VehiculosVendidosDetalle">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_VehiculosVendidosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
+
+        $('#MesesVehiculosVendidos').change(function () {
+            Cargar_VehiculosVendidosDetalleParcial(Number($('#MesesVehiculosVendidos').val()),Number($('#AniosVehiculosVendidos').val()));
+        });
+
+        $('#AniosVehiculosVendidos').change(function () {
+            Cargar_VehiculosVendidosDetalleParcial(Number($('#MesesVehiculosVendidos').val()),Number($('#AniosVehiculosVendidos').val()));
+        });
+    });
+
+    function Cargar_VehiculosVendidosDetalleParcial(Mes, Anio)
+    {
+        $('#VehiculosVendidosDetalle').empty();
+        $('#VehiculosVendidosDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#VehiculosVendidosDetalle').load('@Url.Action("VehiculosVendidosDetalleParcial", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
+        });
+    }
+</script>

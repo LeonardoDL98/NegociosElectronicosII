@@ -1,0 +1,238 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_VentaDetalle>
+@{
+    ViewBag.Title = "Pedidos";
+    Layout = "~/Views/Shared/_PrincipalLayout.cshtml";
+}
+
+<style>
+    .img-custom {
+        border: none !important;
+    }
+
+        .img-custom :hover {
+            border: solid 2px black !important;
+        }
+
+    .img-custom-selected {
+        border: solid 2px blue !important;
+    }
+</style>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg padding-y border-top">
+    <div class="container">
+
+        <div class="row">
+            <main class="col-sm-9">
+
+                <div class="card">
+                    <table class="table table-hover shopping-cart-wrap">
+                        <thead class="text-muted">
+                            <tr>
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right" width="200">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Settings.LoggedUser != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr class="elementoCarrito">
+                                        <td>
+                                            <figure class="media">
+                                                @if (item.ProductoId == null)
+                                                {
+                                                    <div class="img-wrap"><img src="@Url.Content("~/Imagenes/Vehiculo/" +@item.NE_Vehiculo.NE_VehiculoImagen.First().Nombre+@item.NE_Vehiculo.NE_VehiculoImagen.First().Extension)" class="img-thumbnail img-sm"></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="img-wrap"><img src="@Url.Content("~/Imagenes/Productos/" +@item.NE_Producto.NE_ProductoImagen.First().Nombre+@item.NE_Producto.NE_ProductoImagen.First().Extension)" class="img-thumbnail img-sm"></div>
+                                                }
+
+                                                <figcaption class="media-body">
+                                                    @if (item.ProductoId == null)
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Vehiculo.NombreVehiculo </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Marca.Marca</dd>
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Color.Color</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Categoria: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Categoria.Categoria</dd>
+                                                            <dt>Transmisión: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Transmision.Transmision</dd>
+                                                        </dl>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Producto.Nombre </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Producto.NE_Marca.Marca</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Producto.NE_Color.Color</dd>
+                                                        </dl>
+                                                    }
+
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <select class="form-control NumeroDeProductos" onchange="functionRecalcularCarrito()">
+                                                @if (item.VehiculoId == null)
+                                                {
+                                                    if (item.NE_Producto.Stock > 0)
+                                                    {
+                                                        for (int i = 0; i < item.NE_Producto.Stock; i++)
+                                                        {
+                                                            <option>@(i + 1)</option>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <option>0</option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option>1</option>
+                                                }
+                                            </select>
+                                        </td>
+                                        <td>
+                                            @if (item.ProductoId == null)
+                                            {
+                                                if (item.NE_Vehiculo.MarcarComoOferta)
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioOFerta)</span>
+                                                    <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (item.NE_Producto.MarcarComoOferta)
+                                                {
+                                                    <var class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioOFerta)</var>
+                                                    <del class="price-old">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</del>
+                                                }
+                                                else
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
+
+                                                }
+                                            }
+                                        </td>
+                                        <td class="text-right">
+                                            
+                                        </td>
+                                        
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <h3>No hay datos en el carrito</h3>
+
+                            }
+                        </tbody>
+                    </table>
+                </div> <!-- card.// -->
+
+            </main> <!-- col.// -->
+
+        </div>
+
+    </div> <!-- container .//  -->
+
+    <div id="cargamodal">
+
+    </div>
+
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<script type="text/javascript">
+
+    function cargando() {
+        $("#cargamodal").load("@Url.Action("FormasPago","Pagos")");
+    }
+
+
+    function agregarDeseo(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarDeseo", "ListaDeseos")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    RefrescarDeseos();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+
+    function eliminarCarrito(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("EliminarCarro", "Carrito")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    window.location.href = '@Url.Action("CarritoDeCompras","Principal")';
+                    RefrescarCarrito();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+    function functionRecalcularCarrito()
+    {
+        var TotalSinDescuentos = 0.0;
+        var TotalConDescuentos = 0.0;
+        var Descuento = 0.0;
+
+        $.each($('.elementoCarrito'), function (i, item) {
+            var esOferta = $(item).find('.esOferta').val() == "si" ? true : false;
+            var precioVenta = Number($(item).find('.precioVenta').val());
+            var precioOferta = Number($(item).find('.precioOferta').val())
+            var numeroProductos = Number($(item).find('.NumeroDeProductos').val())
+
+            if (esOferta) {
+                TotalConDescuentos = TotalConDescuentos + (precioOferta* numeroProductos);
+            }
+            else {
+                TotalConDescuentos = TotalConDescuentos + (precioVenta* numeroProductos);
+            }
+
+            TotalSinDescuentos = TotalSinDescuentos + (precioVenta* numeroProductos);
+        });
+        Descuento = TotalSinDescuentos - TotalConDescuentos;
+
+        $('#TotalSinDescuentos').html('MXN $' + numeroConComas(TotalSinDescuentos.toFixed(2)).toString());
+        $('#Descuento').html('MXN $' + numeroConComas(Descuento.toFixed(2).toString()));
+        $('#TotalConDescuentos').html('<strong>' + 'MXN $' + numeroConComas(TotalConDescuentos.toFixed(2)).toString() + '</strong>');
+    }
+
+    function numeroConComas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+</script>

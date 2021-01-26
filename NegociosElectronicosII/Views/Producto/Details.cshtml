@@ -1,0 +1,97 @@
+﻿@model NegociosElectronicosII.Models.NE_Producto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.Details</h2>
+
+<div>
+    <h4>@Recursos.Articulos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Color.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Color.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Marca.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Marca.Marca)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MarcarComoOferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarcarComoOferta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioOFerta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioOFerta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(Recursos.Edit, "Edit", new { id = Model.ProductoId }) |
+    @Html.ActionLink(Recursos.RegreList, "Index")
+</p>

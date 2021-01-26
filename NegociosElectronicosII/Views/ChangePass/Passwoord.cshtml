@@ -1,0 +1,91 @@
+﻿<div class="modal fade" tabindex="-1" role="dialog" id="passdetalle">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cambiar contrasena</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Contrasena</label>
+                    <input type="password" class="form-control" id="newPass" />
+                </div>
+                <div class="form-group">
+                    <label>Confirmar contrasena</label>
+                    <input type="password" class="form-control" id="ConfirmPass" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnCambiar">Cambiar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="modal fade" id="passdetalle" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+           
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+    </div>
+</div>*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#passdetalle").modal("show");
+
+        $('#btnCambiar').click(function () {
+
+    if ($('#newPass').val() == "" || $('#newPass').val() == undefined || $('#newPass').val() == null) {
+                alert('Agregue la nueva contrasena.');
+                return false;
+            }
+
+            if ($('#ConfirmPass').val() == "" || $('#ConfirmPass').val() == undefined || $('#ConfirmPass').val() == null) {
+                alert('Confirme el password.');
+                return false;
+            }
+
+            if ($('#newPass').val() != $('#ConfirmPass').val())
+            {
+                alert('Las contrasenas no coinciden');
+                return false;
+            }
+
+            //fnLoader();
+
+            $.ajax({
+                url: '@Url.Action("ChangePas", "ChangePass")',
+                data: { newPass: $('#newPass').val() },
+                type: 'POST',
+                success: function (response) {
+                    
+                    if (response.Success){
+                        alert('Su contrasena fue modificada correctamente');
+                        window.location.href = '@Url.Action("Index","Vehiculo")';
+                    }
+                    else
+                        alert('Ha ocurrido un error');
+                },
+                error: function () {
+                    alert('Ha ocurrido un error');
+                }
+            });
+        });
+    });
+
+
+</script>

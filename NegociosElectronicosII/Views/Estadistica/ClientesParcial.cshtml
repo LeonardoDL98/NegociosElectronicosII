@@ -1,0 +1,71 @@
+﻿@model List<NegociosElectronicosII.Models.NE_Usuario>
+
+@Styles.Render("~/Content/DataTablesCss")
+@Scripts.Render("~/bundles/datatables")
+
+<div class="table-responsive">
+    <table class="table table-striped _datatable">
+        <thead>
+            <tr>
+                <th>Correo</th>
+                <th>Cliente</th>
+                <th>Ingresos <br /> al portal</th>
+                <th>Compras <br /> realizadas</th>
+                <th>$ Compras</th>
+                <th>Articulos en <br /> el carrito</th>
+                <th>Articulos en <br /> lista de deseos</th>
+                <th>Ultimo inicio<br /> de sesion</th>
+                <th>Fecha<br /> de registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CorreoElectronico</td>
+                    <td>@item.Nombre @item.ApellidoPaterno</td>
+                    <td>@item.NumeroDeIngresosAlPortal</td>
+                    <td>@item.NumeroDeComprasRealizadas</td>
+                    <td>@item.TotalDeCompras.ToString("C2")</td>
+                    <td>@item.NumeroDeArticulosEnElCarro</td>
+                    <td>@item.NumeroDeArticulosEnListaDeDeseos</td>
+                    <td>@string.Format("{0:dd/MM/yyyy}",item.UltimoInicioDeSesion)</td>
+                    <td>@string.Format("{0:dd/MM/yyyy}", item.FechaDeRegistro)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('._datatable').DataTable({
+            "paging": true,
+            "pageLength": 5,
+            //aaSorting: [],
+            "order": [[1, "asc"]],
+            "language": {
+                "emptyTable": "No hay algun registro",
+                "info": "Mostrando de _START_ a _END_ de _TOTAL_ registros",
+                "infoEmpty": "Mostrando 0 registros",
+                "infoFiltered": "(De un total de _MAX_ registros)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar: ",
+                "zeroRecords": "No se encontro ningun registro",
+                "paginate": {
+                    "first": "Primera",
+                    "last": "Ultima",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ":Ordenar la columna de forma ascendente",
+                    "sortDescending": ":Ordenar la columna de forma descendente"
+                }
+            }
+        });
+    });
+</script>

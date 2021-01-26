@@ -1,0 +1,39 @@
+﻿@model NegociosElectronicosII.Models.LoMasVendidoModel
+
+<canvas id="GraficaLoMasVendido"></canvas>
+
+<script type="text/javascript">
+    var colores='@Html.Raw(Model.ColoresJson)';
+    var Nombre = '@Html.Raw(Model.ArticuloVehiculoJson)';
+    var data = '@Html.Raw(Model.CantidadJson)';
+
+    var loMasVendidoCanvas = document.getElementById("GraficaLoMasVendido");
+
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+
+    var Data = {
+        labels:JSON.parse(Nombre),
+        datasets: [
+            {
+                data: JSON.parse(data),
+                backgroundColor: JSON.parse(colores)
+            }]
+    };
+
+    var pieChart = new Chart(loMasVendidoCanvas, {
+        type: 'pie',
+        data: Data
+    });
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+
+</script>

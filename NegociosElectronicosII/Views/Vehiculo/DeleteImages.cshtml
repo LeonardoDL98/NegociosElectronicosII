@@ -1,0 +1,19 @@
+﻿@model List<NegociosElectronicosII.Models.NE_VehiculoImagen>
+@{
+    ViewBag.Title = "DeleteImages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3">
+            <img src="@(Url.Content("~/Imagenes/Vehiculo/")+ item.Nombre+ item.Extension)" width="200" />
+            <br />
+            <a href="@Url.Action("DeleteImagesPost", "Vehiculo", new { id = item.VehiculoImagenId })" class="btn btn-danger">Eliminar</a>
+        </div>
+    }
+</div>
+<br />
+
+

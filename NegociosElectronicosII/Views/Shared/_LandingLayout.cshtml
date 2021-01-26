@@ -1,0 +1,462 @@
+﻿
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
+
+    <title>MERCADO AUTOMIVILISTICO Vocho.net</title>
+
+    @*<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">*@
+    <link rel="shortcut icon" type="image/x-icon" src="~/Content/ui-ecommerce/images/favicon.ico" />
+
+    <!-- jQuery -->
+    @*<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>
+
+    <!-- Bootstrap4 files-->
+    @*<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />*@
+
+    <link href="~/Content/ui-ecommerce/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/ui-ecommerce/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Font awesome 5 -->
+    @*<link href="fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">*@
+    <link href="~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
+
+    <!-- plugin: fancybox  -->
+    @*<script src="plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
+    <link href="plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">*@
+    <link href="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css" rel="stylesheet" />
+    <script src="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"></script>
+
+    <!-- custom style -->
+    @*<link href="css/ui.css" rel="stylesheet" type="text/css" />
+    <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />*@
+    <link href="~/Content/ui-ecommerce/css/ui.css" rel="stylesheet" />
+    <link href="~/Content/ui-ecommerce/css/responsive.css" rel="stylesheet" />
+
+    <!-- custom javascript -->
+    @*<script src="js/script.js" type="text/javascript"></script>*@
+    <script src="~/Content/ui-ecommerce/js/script.js"></script>
+
+    <script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+});
+// jquery end
+    </script>
+
+</head>
+<body class="relative" data-spy="scroll" data-target=".navbar-landing">
+    <header class="section-header">
+        <nav class="navbar navbar-landing navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+
+                <a class="navbar-brand mr-auto" href="@Url.Action("Index","Principal")"> <img class="logo" src="~/Imagenes/logoAuto.png"> Vocho.net</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar1">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#intro">Intro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#features">Servicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#content">Identidad</a>
+                        </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link page-scroll" href="#autos">Autos</a>
+                        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link page-scroll" href="#more">Promociones</a>
+                        </li>
+
+                        @*<li class="nav-item">
+                                <a class="nav-link" href="http://bootstrap-ecommerce.com"> Download </a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div> <!-- container //  -->
+        </nav>
+    </header> <!-- section-header.// -->
+    <!-- ========================= SECTION INTRO ========================= -->
+    <section id="intro" class="section-intro bg-secondary pt-5">
+        <div class="container">
+            <div class="row d-flex" style="min-height:600px;">
+                <div class="col-sm-6 d-flex align-items-center">
+                    <header class="intro-wrap text-white">
+                        <h2 class="display-3"> El coche que siempre soñaste a un bajo precio. </h2>
+                        <p style=" text-align:justify"> Tenemos el automóvil que se ajusta a tus necesidades. <br> sin preocuparte por los costos altos de uno de agencia.</p>
+                        @*<a href="#" class="btn btn-warning">Download</a>*@
+                        @*<a href="#" class="btn btn-light">Learn more</a>*@
+                    </header>  <!-- intro-wrap .// -->
+                </div> <!-- col.// -->
+                <div class="col-sm-6 text-right">
+
+                    <img src="https://www.honda.mx/assets/img/autos/honda/modelos/crv2019/colores/plata.png" width="700" class="img-fluid my-5" />
+                    @*<img src="images/items/comp.png" class="img-fluid my-5" width="500">*@
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION INTRO END// ========================= -->
+    <!-- ========================= SECTION FEATURES ========================= -->
+    <section id="features" class="section-features bg2 padding-y-lg">
+        <div class="container">
+
+            <header class="section-heading text-center">
+                <h2 class="title-section">Servicios y financiamientos. </h2>
+                <p class="lead">Nos comprometemos contigo por eso te mostramos todos los servicios al alcance de tus manos.</p>
+            </header><!-- sect-heading -->
+
+            <div class="row">
+                <aside class="col-sm-4">
+                    <figure class="itembox text-center">
+                        <img src="https://www.stickpng.com/assets/images/5a4525f5546ddca7e1fcbc86.png" width="200" height="200" class="img-fluid my-5" />
+                        <figcaption class="text-wrap">
+                            <h4 class="title">Números de servicio al cliente </h4>
+                            <br>
+                            <p style=" text-align:justify">Grúa :4492793723<br>Mantenimiento:4492437364<br>Quejas o sujerencias:44923734690</pstyle=">
+                        </figcaption>
+                    </figure> <!-- iconbox // -->
+                </aside> <!-- col.// -->
+                <aside class="col-sm-4">
+                    <figure class="itembox text-center">
+                        <img src="http://automatiz.com.gt/sites/default/files/automatiz-pintura.png" width="200" height="200" class="img-fluid my-5" />
+                        <figcaption class="text-wrap">
+                            <h4 class="title">Carrocería y/o pintura</h4>
+                            <p style=" text-align:justify">
+                                Nuestro departamento de hojalatería y pintura está regido con los estándares
+                                de calidad de la asociación mexicana. Deja en nuestras manos tu vehículo para darle
+                                ese toque increíble que nos caracteriza. Si quieres agendar una cita para chequeo de
+                                tu vehículo comunícate al teléfono de servicio (449) 864-5505 (449) 910-5193 (444) 824-8638
+                                para ser atendido personalmente por un asesor.
+                            </p>
+                        </figcaption>
+                    </figure> <!-- iconbox // -->
+                </aside> <!-- col.// -->
+                <aside class="col-sm-4">
+                    <figure class="itembox text-center">
+                        <img src="https://image.flaticon.com/icons/png/512/35/35138.png" width="200" height="200" class="img-fluid my-5" />
+                        <figcaption class="text-wrap">
+                            <h4 class="title">Crédito y financiamiento</h4>
+                            <p style=" text-align:justify">Si deseas obtener información acerca del crédito o financiamiento puedes acudir a nuestra sucursal o marcar a los mineros 4498647364 o 44927367402. </p>
+                        </figcaption>
+                    </figure> <!-- iconbox // -->
+                </aside> <!-- col.// -->
+            </div> <!-- row.// -->
+
+            <p class="text-center">
+                <br>
+                @*<a href="#" class="btn btn-warning">Some action button</a>*@
+            </p>
+
+        </div><!-- container // -->
+    </section>
+    <!-- ========================= SECTION FEATURES END// ========================= -->
+    <!-- ========================= SECTION CONTENT  ========================= -->
+    <section id="content" class="section-content padding-y-lg">
+        <div class="container">
+
+            <header class="section-heading text-center">
+                <h2 class="title-section">Misión, Visión y Valores.</h2>
+                <p class="lead"> Misión</p>
+            </header><!-- sect-heading -->
+
+            <div class="row justify-content-center">
+                <article class="col-md-6 text-center">
+                    <p style=" text-align:justify">
+                        Somos un concesionario oficial, especializado en la comercialización
+                        de coches nuevos, usados, repuestos, accesorios, mantenimiento preventivo y
+                        correctivo, y trabajos de taller de carrocería y pintura. Contamos con personal
+                        altamente calificado, tecnología punta e infraestructura que garantiza un servicio
+                        integral de óptima calidad; cumplimos con los estándares de la marca, normas
+                        ambientales y del entorno social; trabajamos por el bienestar y crecimiento de
+                        nuestro talento humano, para lograr así la total satisfacción de nuestros clientes.
+                    </p>
+                    <p class="lead"> Visión </p>
+                    <p style=" text-align:justify">
+                        Ser el primer concesionario a nivel estatal, líder en calidad, tecnología,
+                        infraestructura, capital humano, rentabilidad y solidez financiera; encaminados a lograr
+                        la fidelización de nuestros clientes, convirtiéndonos en la mejor opción del mercado,
+                        excediendo las expectativas de nuestros clientes, empleados y proveedores.
+                    </p>
+                    <p class="lead"> Valores  </p>
+                    <p style=" text-align:justify">
+                        Respeto por las personas: En el ámbito personal y profesional, en cualquier situación
+                        que acontezca y tanto dentro como fuera de la organización.<br>
+                        Equipo: Trabajamos en equipo lo que supone colaborar, compartir esfuerzos y multiplicar logros.<br>
+                        Calidad: Ofrecemos un trabajo bien hecho.<br>
+                        Transparencia: En todo tipo de acciones, propuestas, evaluaciones, conclusiones, resultados.<br>
+                        Rentabilidad: Somos eficientes en nuestros procesos para seguir creciendo e invirtiendo en nuestra empresa.<br>
+                        Lealtad: Con las personas, los compromisos, con los clientes y en general con la estrategia
+                        de nuestra empresa.
+                    </p>
+                </article> <!-- col.// -->
+            </div> <!-- row.// -->
+
+    </section>
+
+    </div> <!-- container .//  -->
+    <!-- ========================= SECTION CONTENT  END// ========================= -->
+    @*<section id="autos" class="section-content padding-y-lg">
+        <div class="autos">
+            <header class="section-heading text-center">
+                <h2 class="title-section">Autos en venta</h2>
+            </header>
+            <div style="background-color: #efebe9">
+                <div class="row">
+                    <div class="col-sm-1 ">
+                    </div>
+                    <div class="col-sm-10 img-back">
+                        <br>
+                        <hr>
+                        <div class="row" style="margin-right: 0px">
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc11.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://www.arpem.com/imagenes/ficha/4/4/3/2/a3-2010.54432.jpg" class="zoom img-fluid rounded " alt="">
+
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: audi s3 TFSI <br> modelo: 2008  <br>kilometraje: 120000 km <br> transmicion: manual <br>tipo: sedan 4 puertas<br> precio: $92,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc12.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://s3-us-west-2.amazonaws.com/static.izmocars.com/vehicleimages/640x480/dealers/auto-compactos-nissan/nissan-sentra-used-257487-inv-0.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: nissan sentra advance <br> modelo: 2018  <br>kilometraje: 70000 km <br> transmicion: automatica <br>tipo: sedan 4 puertas<br> precio: $192,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc13.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://inventory-dmg.assets-cdk.com/4/7/2/17552918274.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: mitsubishi lancer evo <br> modelo: 2015  <br>kilometraje: 110000 km <br> transmicion: manual <br>tipo: sedan 4 puertas<br> precio: $102,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc14.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://img.automexico.com/crop/535x349/2018/05/30/f713ac05-3-09f6.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: nissan tsuru <br> modelo: 2018  <br>kilometraje: 20000 km <br> transmicion: manual <br>tipo: sedan 4 puertas<br> precio: $125,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc15.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://media.gm.com/dld/content/dam/Media/images/MX/Vehicles/Chevrolet/Trucks/Cheyenne/2014/Chevrolet-CheyenneLTZ-2014-02.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: chevrolet cheyene <br> modelo: 2015  <br>kilometraje: 112000 km <br> transmicion: automatica <br>tipo: Pick-up<br> precio: $502,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc6.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://i.ebayimg.com/00/s/NTk5WDgwMA==/z/-XwAAOSwkS9djDqH/$_19.JPG?set_id=8800005007" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: GMC sieera denali <br> modelo: 2017  <br>kilometraje: 40000 km <br> transmicion: automatica <br>tipo: Pick-up<br> precio: $758,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc7.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://cdn-yams.schibsted.com/api/v1/tenants/dd1f88aa-e3e2-450c-9fa9-a03ea59a6bf0/domains/57a9d53a-fe30-4b6f-a4de-d624bd25134b/buckets/a4371201-ebab-47eb-b797-74238f668ee7/images/dd/dd22ca41-da8d-442e-9f26-e372289969a1?rule=progressive" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: Ford mustang <br> modelo: 2016  <br>kilometraje: 90000 km <br> transmicion: manual<br>tipo: coupè<br> precio: $558,000MX. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc8.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://s3-us-west-2.amazonaws.com/static.izmocars.com/vehicleimages/640x480/dealers/auto-compactos-nissan/nissan-versa-used-207409-inv-16.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: nissan versa <br> modelo: 2017  <br>kilometraje: 64000 km <br> transmicion: automatica<br>tipo: sedan 4 puertas<br> precio: $118,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc8.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://images.latamautos.com/thumbs/w/990x540xC/ptx_migration_mexico/2152018/1766951/o_o/pt_1766951_10146375.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: dodge atitude <br> modelo: 2017  <br>kilometraje: 24000 km <br> transmicion: manual<br>tipo: sedan 4 puertas<br> precio: $150,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc8.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://i.ebayimg.com/images/g/mVwAAOSwJ41dbqMm/s-l800.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: VW jetta sport  <br> modelo: 2017  <br>kilometraje: 34000 km <br> transmicion: standart<br>tipo: sedan 4 puertas<br> precio: $178,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc8.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://497asz40ewd94a7ur73jw98i-wpengine.netdna-ssl.com/wp-content/uploads/2018/07/blue-chevrolet-camaro-ss-carbon-fiber-anderson-composites-body-kit-ccw-forged-wheels-k.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">marca: chevrolet camaro ss <br> modelo: 2018  <br>kilometraje: 0 km <br> transmicion: standar<br>tipo: coupe 2 puertas<br> precio: $710,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                <div class="card" style="width: 100%;margin-bottom: 15px">
+                                    <a href="Img/hc8.jpg" class="fancybox" rel="ligthbox">
+                                        <img src="https://http2.mlstatic.com/D_NQ_NP_665096-MLM32043305337_092019-W.jpg" class="zoom img-fluid rounded " alt="">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text fonttextos">chevrolet tahoe <br> modelo: 2016  <br>kilometraje: 94000 km <br> transmicion: automatica<br>tipo: pick-up 4 puertas<br> precio: $688,000MX.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="col-sm-1 ">
+                    </div>
+
+                    <div class="col-sm-1 ">
+                    </div>
+
+                    <div class="col-sm-1">
+                    </div>
+                </div>
+            </div>*@
+
+            <!-- ========================= SECTION CONTENT ASIDE ========================= -->
+            <section id="more" class="bg section-content padding-y-lg">
+                <div class="container">
+
+                    @*<header class="section-heading text-center">
+                        <h2 class="title-section"> Promociones</h2>
+                        <p class="lead"> La financiera en Aguascalientes, tiene para ti planes diseñados a tu medida con las siguientes ventajas:<br> </p>
+                    </header>*@<!-- sect-heading --
+
+                    <div class="row justify-content-center">
+                        <article class="col-md-6 text-center">
+                            <p>
+
+                                Planes de credito:<br>
+                                Plazos de 03 hasta 72 meses,
+                                Enganche desde el 20%,
+                                Opción a pagos especiales en diciembre<br>
+                                Nuestros planes incluyen:<br>
+                                Seguro de vida,
+                                Seguro de desempleo o invalidez total-temporal hasta por 6 meses,
+                                Programa de Reposición de unidad (en caso de pérdida total por robo o siniestro)<br><br>
+                                Tambien ofrecemos:<br>
+                                Seguro del vehículo con cobertura amplia,
+                                Seguro del vehículo con pago de contado o financiado (pago de contado únicamente aplica para el primer año del plazo),
+                                Opción a contratar sistema de localización satelital (Satfinder R), que permite el monitoreo y la localización en caso de robo<br><br>
+                                Ademas financiamos:<br>
+                                Accesorios para personalizar tu auto,
+                                Garantía extendida,
+                                Placas y tenencia<br>
+                            </p>
+                            @*<p>
+                                Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.*@
+                            </p>
+                        </article> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+                </div> <!-- container .//  -->
+            </section>
+    </section>
+
+    @*<section id="autos" class="section-content padding-y-lg">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="http://autoaireexpress.com/wp-content/uploads/2018/12/slide2.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://venezolanoenchile.com/wp-content/uploads/2017/02/auto-nuevo-santiago-vale-la-pena-1014x487.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="https://www.chevrolet.com.mx/content/dam/chevrolet/na/mx/es/index/index-sub-content/01-images/2020-equinox-midnight.jpg?imwidth=960" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </section>*@
+    @**@
+    <!-- ========================= SECTION CONTENT ASIDE END// ========================= -->
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer bg-dark white">
+        <div class="container">
+            <section class="footer-bottom row">
+                <div class="col-sm-6">
+                    <p style="color:white">@Recursos.Bocho</p>  <br>
+                </div>
+                <div class="column-135 w-col w-col-4">
+                    <a href="https://www.facebook.com" target="_blank"
+                       class="link-block-43 w-inline-block"><img src="https://assets.website-files.com/5b454feb485cea52095594db/5b5158c3e4645f257a4daa06_008-facebook.png" alt="" class="image-176"></a>
+                    <a href="https://www.instagram.com" target="_blank"
+                       class="link-block-44 w-inline-block"><img src="https://assets.website-files.com/5b454feb485cea52095594db/5b6ba3bf9e9b6faa6539a125_icon-04-512.png" alt="" width="60" height="60" class="image-176"></a>
+                    <a href="https://twitter.com" target="_blank"
+                       class="link-block-45 w-inline-block"><img src="https://assets.website-files.com/5b454feb485cea52095594db/5b5158c33bc46d5b32eda5e5_006-twitter.png" alt="" class="image-176"></a>
+                    <a href="https://www.youtube.com" target="_blank"
+                       class="link-block-46 w-inline-block"><img src="https://assets.website-files.com/5b454feb485cea52095594db/5b5158c318c95bd85ac386c8_001-youtube.png" alt="" class="image-176"></a>
+                    <a href="https://www.linkedin.com" target="_blank"
+                       class="link-block-47 w-inline-block"><img src="https://assets.website-files.com/5b454feb485cea52095594db/5b5158c38d0363613a0d3efd_003-linkedin.png" alt="" class="image-176"></a>
+                </div>
+            </section> <!-- //footer-top -->
+        </div><!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+    <script>
+        $('.carousel').carousel({
+            interval: 2000
+        });
+    </script>
+    @RenderBody();
+</body>
+</html>

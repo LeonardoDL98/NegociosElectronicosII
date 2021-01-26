@@ -1,0 +1,81 @@
+﻿@model NegociosElectronicosII.Models.NE_Carrusel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.Delete</h2>
+
+<h3>@Recursos.Deletethis</h3>
+<div>
+    <h4>@Recursos.Carruse</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Texto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ruta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ruta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Extension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Extension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreArchivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Recursos.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Recursos.RegreList, "Index")
+        </div>
+    }
+</div>

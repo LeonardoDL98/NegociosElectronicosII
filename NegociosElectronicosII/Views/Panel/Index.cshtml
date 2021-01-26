@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<style>
+    .ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    .ul li{
+              background-color: #666;
+          }
+    .ul li a {
+    color: #ccc;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 10px 10px 20px;
+}
+    .ul li a:hover {
+    background: #000;
+    border-left: 10px solid #333;
+    color:
+}</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="menu">
+        <ul>
+            <li>@Html.ActionLink("Usuarios", "Index","Usuario")</li>
+            <li>@Html.ActionLink("Vehiculos","Index","Vehiculo")</li>
+            <li>@Html.ActionLink("Productos", "Index","Producto")</li>
+        </ul>
+    </div>
+}

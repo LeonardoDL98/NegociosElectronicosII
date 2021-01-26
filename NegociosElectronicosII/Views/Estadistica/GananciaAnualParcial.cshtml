@@ -1,0 +1,44 @@
+﻿
+@{
+    List<System.Web.Mvc.SelectListItem> fechas = (List<System.Web.Mvc.SelectListItem>)ViewBag.Fechas;
+}
+
+<div class="card border-left-primary shadow h-100 py-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ganancias (Anualmente)</div>
+            </div>
+            <div class="col-md-12">
+                <label>Anio</label>
+                <select class="form-control" id="MesGananciaAnual">
+                    @foreach (var item in fechas)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" id="MesGananciaAnualDetalle">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_GananciaAnualDetalleParcial(@DateTime.Now.Year);
+
+        $('#MesGananciaAnual').change(function () {
+            Cargar_GananciaAnualDetalleParcial($(this).val());
+        });
+    });
+
+    function Cargar_GananciaAnualDetalleParcial(Anio)
+    {
+        $('#MesGananciaAnualDetalle').empty();
+        $('#MesGananciaAnualDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#MesGananciaAnualDetalle').load('@Url.Action("GananciaAnualDetalleParcial", "Estadistica")', { Anio: Anio }, function () {
+        });
+    }
+</script>

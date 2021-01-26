@@ -1,0 +1,252 @@
+﻿<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <article class="card">
+                <div class="card-body p-5">
+                    <ul class="nav bg radius nav-pills nav-fill mb-3" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="pill" href="#nav-tab-card">
+                                <i class="fa fa-credit-card"></i> @Recursos.Tarjeta
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#nav-tab-paypal">
+                                <i class="fab fa-paypal"></i>  @Recursos.Pay
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="pill" href="#nav-tab-bank">
+                                <i class="fa fa-university"></i>  @Recursos.TransBanca
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="nav-tab-card">
+                            <p class="alert alert-success alerts" id="AlertSuccess"></p>
+                            <p class="alert alert-danger alerts" id="AlertDanger"></p>
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="username">@Recursos.NameTitu</label>
+                                    <input id="txtTitular" type="text" class="form-control" name="username" placeholder="" required="">
+                                </div> <!-- form-group.// -->
+                                <div class="form-group">
+                                    <label for="cardNumber">@Recursos.NumTar</label>
+                                    <div class="input-group">
+                                        <input id="txtCardNumber" type="text" class="form-control" name="cardNumber" placeholder="">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text text-muted">
+                                                <i class="fab fa-cc-visa"></i> &nbsp; <i class="fab fa-cc-amex"></i> &nbsp;
+                                                <i class="fab fa-cc-mastercard"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> <!-- form-group.// -->
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="form-group">
+                                            <label><span class="hidden-xs">@Recursos.Expiration</span> </label>
+                                            <div class="input-group">
+                                                <input id="txtMes" type="number" class="form-control" placeholder="MM" name="">
+                                                <input id="txtAnio" type="number" class="form-control" placeholder="YY" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label data-toggle="tooltip" title="" data-original-title="Codigo que se encuentra al reverso de su tarjeta">CVV <i class="fa fa-question-circle"></i></label>
+                                            <input id="txtCVV" type="number" class="form-control" required="">
+                                        </div> <!-- form-group.// -->
+                                    </div>
+                                </div> <!-- row.// -->
+                                <button class="subscribe btn btn-primary btn-block" type="button" onclick="agregarventa(1)"> Confirm  </button>
+                            </form>
+                        </div> <!-- tab-pane.// -->
+                        <div class="tab-pane fade" id="nav-tab-paypal">
+                            <p>@Recursos.PaypalEasy</p>
+                            <p>
+                                <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i> @Recursos.LoginPaypal</button>
+                            </p>
+                            <p>
+                                <strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                        <div class="tab-pane fade" id="nav-tab-bank">
+                            <p>Bank accaunt details</p>
+                            <dl class="param">
+                                <dt>BANK: </dt>
+                                <dd> THE WORLD BANK</dd>
+                            </dl>
+                            <dl class="param">
+                                <dt>Accaunt number: </dt>
+                                <dd> 12345678912345</dd>
+                            </dl>
+                            <dl class="param">
+                                <dt>IBAN: </dt>
+                                <dd> 123456789</dd>
+                            </dl>
+                            <p>
+                                <strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div> <!-- tab-pane.// -->
+                    </div> <!-- tab-content .// -->
+                </div> <!-- card-body.// -->
+            </article> <!-- card.// -->
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.alerts').hide();
+        $("#exampleModal").modal("show");
+    });
+    function agregarventa(tipo) {
+        var TotalConDescuentos = 0.0;
+        var array = [];
+        var objeto = {};
+        $.each($('.elementoCarrito'), function (i, item) {
+            var precio = 0.0;
+            var esOferta = $(item).find('.esOferta').val() == "si" ? true : false;
+            var precioVenta = Number($(item).find('.precioVenta').val());
+            var precioOferta = Number($(item).find('.precioOferta').val())
+            var numeroProductos = Number($(item).find('.NumeroDeProductos').val())
+            var proid = Number($(item).find('.productoid').val())
+            var vehid = Number($(item).find('.vehiculoid').val())
+            if (esOferta) {
+                TotalConDescuentos = TotalConDescuentos + (precioOferta * numeroProductos);
+            }
+            else {
+                TotalConDescuentos = TotalConDescuentos + (precioVenta * numeroProductos);
+            }
+            esOferta ? precio = precioOferta : precio = precioVenta;
+            proid == 0 ? proid = null : proid = proid;
+            vehid == 0 ? vehid = null : vehid = vehid;
+
+            objeto = { "total": precio, "cantidad": numeroProductos, "productoid": proid, "vehiculoid": vehid };
+            array.push(objeto);
+        });
+
+        //Validations
+        $('.alerts').hide();
+
+        if ($('#txtTitular').val() == null || $('#txtTitular').val() == "" || $('#txtTitular').val() == undefined) {
+            $('#AlertDanger').html('El campo titular es requerido');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if ($('#txtCardNumber').val() == null || $('#txtCardNumber').val() == "" || $('#txtCardNumber').val() == undefined) {
+            $('#AlertDanger').html('El campo tarjeta bancaria es requerido');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (($('#txtCardNumber').val()).length != 16) {
+            $('#AlertDanger').html('El campo tarjeta bancaria debe de tener 16 digitos');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (($('#txtCardNumber').val()).length < 16) {
+            $('#AlertDanger').html('El campo tarjeta bancaria debe de tener 16 digitos');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (isNaN($('#txtMes').val())) {
+            $('#AlertDanger').html('El campo mes no es numerico');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (($('#txtMes').val()).length != 2) {
+            $('#AlertDanger').html('el campo mes no es numerico');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (Number($('#txtMes').val()) < 1 || Number($('#txtMes').val()) > 12) {
+            $('#AlertDanger').html('el campo mes debe de estar entre el rango de 1 y 12');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (Number($('#txtMes').val()) < 1 || Number($('#txtMes').val()) > 12) {
+            $('#AlertDanger').html('el campo mes debe de estar entre el rango de 1 y 12');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (isNaN($('#txtAnio').val())) {
+            $('#AlertDanger').html('El campo anio no es numerico');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (($('#txtAnio').val()).length != 4) {
+            $('#AlertDanger').html('la longitud del campo anio no es valida (4 digitos)');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        var dt = new Date();
+        if (Number($('#txtAnio').val()) < dt.getFullYear()) {
+            $('#AlertDanger').html('la fecha seleccionada no es valida');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if ($('#txtCVV').val() == null || $('#txtCVV').val() == "" || $('#txtCVV').val() == undefined) {
+            $('#AlertDanger').html('El campo CVV es requerido');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        if (isNaN($('#txtCVV').val())) {
+            $('#AlertDanger').html('El campo CVV no es numerico');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        $('#AlertDanger').hide();
+        //$('#AlertSuccess').show();
+        //$('#AlertDanger').show();
+    
+        if (TotalConDescuentos <= 0)
+        {
+            $('#AlertDanger').html('El total del monto a pagar no es valido');
+            $('#AlertDanger').show();
+            return false;
+        }
+
+        $('#AlertDanger').hide();
+
+        fnLoader();
+
+        $.ajax({
+            url: '@Url.Action("AgregarVenta", "Pagos")',
+            data: { tipopago: tipo, precio: TotalConDescuentos, valores: JSON.stringify(array) },
+            type: 'POST',
+            success: function (response) {
+                $.unblockUI();
+                if (response.TipoDeMensage == 1) {
+                    alert('Se realizo el pago exitosamente');
+                    window.location.href = '@Url.Action("Index","Principal")';
+                }
+                else 
+                    alert(response.Message);
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,120 @@
+﻿@model NegociosElectronicosII.Models.NE_Vehiculo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.Delete</h2>
+
+<h3>@Recursos.Deletethis</h3>
+<div>
+    <h4>@Recursos.Vehiculos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreVehiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreVehiculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Categoria.Categoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Categoria.Categoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Color.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Color.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Marca.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Marca.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NE_Transmision.Transmision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NE_Transmision.Transmision)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MarcarComoOferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarcarComoOferta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioOFerta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioOFerta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Recursos.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Recursos.RegreList, "Index")
+        </div>
+    }
+</div>

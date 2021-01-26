@@ -1,0 +1,132 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_ProductoImagen>
+@{
+    List<Int32> Ids = new List<int>();
+}
+    <div class="padding-y-sm">
+        <span> @ViewBag.TotalDeArticulos resultados de "Productos"</span>
+    </div>
+    <div class="row-sm">
+        @foreach (var item in Model)
+        {
+            if (!Ids.Contains(item.ProductoId))
+            {
+            <div class="col-md-3 col-sm-6">
+                <figure class="card card-product">
+                    <div class="img-wrap">
+                        <img src="@Url.Content("~/Imagenes/Productos/" + item.Nombre + item.Extension)">
+                    </div>
+                    <figcaption class="info-wrap">
+                        <a href="#" class="title"><b>Nombre: </b>@item.NE_Producto.Nombre </a>
+                        <br>
+                        <span class="navbar-default"><b>Marca: </b>@item.NE_Producto.NE_Marca.Marca</span>
+                        <br>
+                        <span class="navbar-default"> <b>Descripcion: </b> @item.NE_Producto.Descripcion</span>
+                        <br />
+                        @if (item.NE_Producto.MarcarComoOferta)
+                        {
+                            <span class="price-new">@String.Format("{0:C2}", item.NE_Producto.PrecioOFerta)</span>
+                            <del class="price-old">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</del>
+                        }
+                        else
+                        {
+                            <span class="price-new">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
+                        }
+                        <div class="input-group w-100">
+                            <div class="input-group-append">
+                                <button class="btn btn-warning" type="button" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="agregar(@item.ProductoId,2)">
+                                    <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                                </button>
+                            </div>
+                            <div class="input-group-append">
+                                <button data-original-title="Agregar a Lista de Deseados" type="button" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="detallesproductos(@item.ProductoId,2)">
+                                <i class="fa fa-eye"></i> Ver mas detalles
+                            </button>
+                        </div>
+
+
+                    </figcaption>
+                </figure> <!-- card // -->
+            </div> <!-- col // -->
+                if (!Ids.Contains(item.ProductoId))
+                {
+                    Ids.Add(item.ProductoId);
+                }
+            }
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    @if (ViewBag.NumeroDePaginas > 1)
+                    {
+                        if (ViewBag.PaginaActual != 1)
+                        {
+                            <li class="page-item"><a class="page-link" href="#_GridArticulo" onclick="CambiarDePaginaArticulo(@(ViewBag.PaginaActual-1))">Previous</a></li>
+                        }
+                        for (int i = 0; i < ViewBag.NumeroDePaginas; i++)
+                        {
+                            <li class="page-item"><a class="page-link" href="#_GridArticulo" onclick="CambiarDePaginaArticulo(@(i+1))">@(i + 1)</a></li>
+                        }
+                        if (ViewBag.PaginaActual != ViewBag.NumeroDePaginas)
+                        {
+                            <li class="page-item"><a class="page-link" href="#_GridArticulo" onclick="CambiarDePaginaArticulo(@(ViewBag.PaginaActual+1))">Next</a></li>
+                        }
+                    }
+                    @*<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>*@
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+<script type="text/javascript">
+
+    function agregar(nuevo, cons,lug) {
+        $.ajax({
+            url: '@Url.Action("AgregarCarro", "Carrito")',
+            data: { id: nuevo, constante: cons, lugar:lug },
+            type: 'POST',
+             success: function (response) {
+                 alert(response.Message);
+                 RefrescarCarrito();
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+    function CambiarDePaginaArticulo(Pagina) {
+        fnPintarGridDeArticulos(Pagina);
+    }
+
+     function agregarDeseo(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarDeseo", "ListaDeseos")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    RefrescarDeseos();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+
+</script>
+

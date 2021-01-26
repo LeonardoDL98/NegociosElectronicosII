@@ -1,0 +1,57 @@
+﻿@model NegociosElectronicosII.Models.NE_FAQS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.Delete</h2>
+
+<h3>@Recursos.Deletethis</h3>
+<div>
+    <h4>@Recursos.Faqs</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pregunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pregunta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Respuesta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="@Recursos.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Recursos.RegreList, "Index")
+        </div>
+    }
+</div>

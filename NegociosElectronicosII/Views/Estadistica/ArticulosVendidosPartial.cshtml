@@ -1,0 +1,59 @@
+﻿
+@{
+    List<System.Web.Mvc.SelectListItem> anios = (List<System.Web.Mvc.SelectListItem>)ViewBag.Anios;
+    List<System.Web.Mvc.SelectListItem> meses = (List<System.Web.Mvc.SelectListItem>)ViewBag.Meses;
+}
+
+<div class="card border-left-primary shadow h-100 py-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Articulos vendidos</div>
+            </div>
+            <div class="col-md-12">
+                <label>Mes</label>
+                <select class="form-control" id="MesesArticulosVendidos">
+                    @foreach (var item in meses)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label>Anios</label>
+                <select class="form-control" id="AniosArticulosVendidos">
+                    @foreach (var item in anios)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" id="ArticulosVendidosDetalle">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_ArticulosVendidosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
+
+        $('#MesesArticulosVendidos').change(function () {
+            Cargar_ArticulosVendidosDetalleParcial(Number($('#MesesArticulosVendidos').val()),Number($('#AniosArticulosVendidos').val()));
+        });
+
+        $('#AniosArticulosVendidos').change(function () {
+            Cargar_ArticulosVendidosDetalleParcial(Number($('#MesesArticulosVendidos').val()),Number($('#AniosArticulosVendidos').val()));
+        });
+    });
+
+    function Cargar_ArticulosVendidosDetalleParcial(Mes, Anio)
+    {
+        $('#ArticulosVendidosDetalle').empty();
+        $('#ArticulosVendidosDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#ArticulosVendidosDetalle').load('@Url.Action("ArticulosVendidosDetalleParcial", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
+        });
+    }
+</script>
+

@@ -1,0 +1,65 @@
+﻿
+<header class="section-heading heading-line">
+    <h4 class="title-section bg text-uppercase">Vehiculos</h4>
+</header>
+
+<div class="row" id="filtroVehiculo"></div> 
+<div id="gridVehiculo"></div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")");
+
+        fnPintarGridDeVehiculos(1);
+    });
+
+    // Decimal PrecioInicial, Decimal PrecioFinal)
+    function fnPintarGridDeVehiculos(Pagina, busqueda) {
+        if (busqueda == null || busqueda == undefined)
+            busqueda = "";
+
+        var marcas_seleccionadas = [];
+        var categorias_seleccionados = [];
+        var colores_seleccionados = [];
+        var transamisiones_seleccionadas = [];
+
+        $.each($('.marca_auto'), function (i, item) {
+            if($(item).is(':checked'))
+                marcas_seleccionadas.push($(item).val());
+        });
+
+        $.each($('.categoria_auto'), function (i, item) {
+            if ($(item).is(':checked'))
+                categorias_seleccionados.push($(item).val());
+        });
+
+        $.each($('.color_auto'), function (i, item) {
+            if ($(item).is(':checked'))
+                colores_seleccionados.push($(item).val());
+        });
+
+        $.each($('.transmision_auto'), function (i, item) {
+            if ($(item).is(':checked'))
+                transamisiones_seleccionadas.push($(item).val());
+        });
+        
+        var datos= {
+            Pagina: Pagina,
+            Marcas: marcas_seleccionadas.length > 0 ? marcas_seleccionadas.join(',') : null,
+            Color: colores_seleccionados.length > 0 ? colores_seleccionados.join(',') : null,
+            Categoria: categorias_seleccionados.length > 0 ? categorias_seleccionados.join(',') : null,
+            Transmision: transamisiones_seleccionadas.length > 0 ? transamisiones_seleccionadas.join(',') : null,
+            PrecioFinal: $('#max_auto').val() == "" || $('#max_auto').val() == null || $('#max_auto').val() == undefined ? -1 : Number($('#max_auto').val()),
+            PrecioInicial: $('#min_auto').val() == "" || $('#min_auto').val() == null || $('#min_auto').val() == undefined ? -1 : Number($('#min_auto').val()),
+            Busqueda: busqueda
+        };
+        $("#gridVehiculo").empty();
+        $("#gridVehiculo").html('<img src="@(Url.Content("~/Imagenes/Cargador/loader4.gif"))"/>');
+        $("#gridVehiculo").load("@Url.Action("GridVehiculoParcial","Principal")",datos,function(){
+            
+        });
+    }
+
+</script>
+

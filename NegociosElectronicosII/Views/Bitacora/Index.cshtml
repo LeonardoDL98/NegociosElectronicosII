@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Bitacora>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.RegisActivity</h2>
+
+<table class="table dt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaDeRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Accion.Accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Usuario.Nombre)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaDeRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Accion.Accion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Usuario.Nombre)
+            </td>
+            
+        </tr>
+        }
+    </tbody>
+
+</table>

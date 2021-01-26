@@ -1,0 +1,87 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorreoElectronico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Rol.Rol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Sexo.Sexo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoElectronico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Rol.Rol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Sexo.Sexo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsuarioId })
+        </td>
+    </tr>
+}
+
+</table>

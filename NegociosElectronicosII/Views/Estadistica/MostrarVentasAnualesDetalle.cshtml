@@ -1,0 +1,43 @@
+﻿@model NegociosElectronicosII.Models.GraficaAnualModel
+
+<canvas id="GraficaDeBarrasAgrupada"></canvas>
+
+<script type="text/javascript">
+    var meses = '@(Html.Raw(Model.MesesJson))';
+    var vehiculos = '@(Html.Raw(Model.VehiculosJson))';
+    var articulos = '@(Html.Raw(Model.ArticulosJson))';
+
+    var ctx = document.getElementById("GraficaDeBarrasAgrupada");
+
+    var data = {
+        //labels: ["ENERO", "FEBRERO", "MARZO"],
+        labels: JSON.parse(meses),
+        datasets: [{
+            label: "Vehiculos",
+            backgroundColor: "rgba(38,243,246,0.5)",
+            data: JSON.parse(vehiculos)
+        }, {
+            label: "Articulos",
+            backgroundColor: "rgba(78,247,160,0.5)",
+            data: JSON.parse(articulos)
+            //data: [4, 3,1]
+        }
+        ]
+    };
+
+    var pieChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            barValueSpacing: 20,
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                    }
+                }]
+            }
+        }
+    });
+
+</script>

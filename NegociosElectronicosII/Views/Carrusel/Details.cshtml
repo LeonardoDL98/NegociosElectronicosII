@@ -1,0 +1,74 @@
+﻿@model NegociosElectronicosII.Models.NE_Carrusel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NE_Carrusel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Posicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Posicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Texto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ruta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ruta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Extension)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Extension)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreArchivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreArchivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarruselId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

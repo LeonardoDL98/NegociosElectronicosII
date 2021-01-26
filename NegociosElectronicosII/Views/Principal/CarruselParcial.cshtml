@@ -1,0 +1,171 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Carrusel>
+
+
+@Styles.Render("~/Content/CarouselCSS")
+@Scripts.Render("~/bundles/CarouselJS")
+@Scripts.Render("~/bundles/CustomJs")
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="row row-sm">
+            <aside class="col-md-3">
+
+                <h6 class="title-bg bg-secondary"> Los Mas buscados</h6>
+                <div style="height:280px;">
+
+                    @if (((List<NegociosElectronicosII.Models.BusquedaModel>)ViewBag.LosMasBuscados).Any())
+                    {
+
+                        foreach (var item in (List<NegociosElectronicosII.Models.BusquedaModel>)ViewBag.LosMasBuscados)
+                        {
+                            <figure class="itemside has-bg border-bottom" style="height: 20%;">
+                                @if (item.TipoDeBusqueda == 1)
+                                {
+                                    <figcaption class="p-2">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img width="40" class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.Vehiculos.NE_VehiculoImagen.First().Nombre + item.Vehiculos.NE_VehiculoImagen.First().Extension )" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="title">@item.Vehiculos.NombreVehiculo</h6>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <button class="btn btn-primary" onclick="detallesproductos(@item.Vehiculos.VehiculoId,1)">Ver detalles</button>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+
+                                }
+                                else
+                                {
+                                    <figcaption class="p-2">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img width="40" class="img-bg" src="@(Url.Content("~/Imagenes/Productos/") + item.Productos.NE_ProductoImagen.First().Nombre + item.Productos.NE_ProductoImagen.First().Extension )" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h6 class="title">@item.Productos.Nombre</h6>
+                                                
+                                            </div>
+                                            <div class="col-md-5">
+                                                <button class="btn btn-primary" onclick="detallesproductos(@item.Productos.ProductoId,2)">Ver detalles</button>
+                                            </div>
+                                        </div>
+                                    </figcaption>
+                                }
+
+                            </figure>
+                        }
+                    }
+                    else
+                    {
+                        <h6>No existe elementos <br /> en la lista</h6>
+                    }
+                </div>
+            </aside>
+            <div class="col-md-6">
+
+                <!-- ================= main slide ================= -->
+                <div class="owl-init slider-main owl-carousel" data-items="1" data-nav="true" data-dots="false">
+                    
+                    @foreach (var item in Model)
+                    {
+                    <div class="item-slide">
+                        <img style="height:50%;" src="@Url.Content("~/Imagenes/Carrusel/" + item.NombreArchivo + item.Extension)">
+                    </div>
+                    }
+
+                </div>
+                <!-- ============== main slidesow .end // ============= -->
+
+            </div> <!-- col.// -->
+            <aside class="col-md-3">
+
+                <h6 class="title-bg bg-secondary"> Ofertas</h6>
+                <div style="height:280px;">
+
+                    @if (((List<NegociosElectronicosII.Models.OfertaModel>)ViewBag.Ofertas).Any())
+                    {
+
+
+                        foreach (var item in (List<NegociosElectronicosII.Models.OfertaModel>)ViewBag.Ofertas)
+                        {
+                            if (item.GetPositionRandom > 5)
+                            {
+                            <figure class="itemside has-bg border-bottom" style="height: 20%;">
+                                @if (item.IsProduct && item.ImagenesProducto.Any())
+                                { 
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Productos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,2)">Ver detalles</button>
+                                    </figcaption>
+                                }
+                                else if (!item.IsProduct && item.ImagenesVehiculo.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
+                                }
+                                
+                            </figure>
+                            }
+                            else
+                            {
+                            <figure class="itemside has-bg border-bottom" style="height: 20%;">
+                                @if (item.IsProduct && item.ImagenesProducto.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Producto/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
+                                }
+                                else if (!item.IsProduct && item.ImagenesVehiculo.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
+                                }
+                                
+                            </figure>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h6>Sin ofertas <br />Por el momento</h6>
+                    }
+                    @*<figure class="itemside has-bg border-bottom" style="height: 33%;">
+                        <img class="img-bg" src="~/Content/ui-ecommerce/images/items/item-sm.png" />
+                        <figcaption class="p-2">
+                            <h6 class="title">One request, many offers </h6>
+                            <a href="#">Good link</a>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="itemside has-bg border-bottom" style="height: 33%;">
+                        <img src="~/Content/ui-ecommerce/images/items/1.jpg" height="80"/>
+                        <figcaption class="p-2">
+                            <h6 class="title">One request, many offers </h6>
+                            <a href="#">Good link</a>
+                        </figcaption>
+                    </figure>
+                    <figure class="itemside has-bg border-bottom" style="height: 33%;">
+                        <img src="~/Content/ui-ecommerce/images/items/2.jpg" height="80"/>
+                        <figcaption class="p-2">
+                            <h6 class="title">One request, many offers </h6>
+                            <a href="#">Good link</a>
+                        </figcaption>
+                    </figure>*@
+                </div>
+
+            </aside>
+        </div> <!-- row.// -->
+    </div> <!-- card-body .// -->
+</div> <!-- card.// -->

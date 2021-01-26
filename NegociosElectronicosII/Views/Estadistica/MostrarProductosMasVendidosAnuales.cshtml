@@ -1,0 +1,41 @@
+﻿@{
+    List<System.Web.Mvc.SelectListItem> Fechas = (List<System.Web.Mvc.SelectListItem>)ViewBag.Fechas;
+}
+<div class="card">
+    <header class="card-header">
+        <h4 class="card-title mt-2">Lo mas vendido anualmente</h4>
+    </header>
+    <article class="card-body">
+        <label>Año</label>
+        <select class="form-control" id="ddLoMasVendidoAnuales">
+            @foreach (var item in Fechas)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </article><br />
+    <article class="card-body" id="GraficoPayAnual">
+    </article> <!-- card-body end .// -->
+    <div class="border-top card-body text-center">
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_MostrarProductosMasVendidosDetalleParcial(@DateTime.Now.Year);
+
+        $('#ddLoMasVendidoAnuales').change(function () {
+            Cargar_MostrarProductosMasVendidosDetalleParcial($(this).val());
+        });
+    });
+
+    function Cargar_MostrarProductosMasVendidosDetalleParcial(Anio)
+    {
+        $('#GraficoPayAnual').empty();
+        $('#GraficoPayAnual').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#GraficoPayAnual').load('@Url.Action("MostrarProductosMasVendidosDetalle", "Estadistica")', { Anio: Anio }, function () {
+        });
+    }
+</script>
+

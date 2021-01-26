@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Articulos" xml:space="preserve">
+    <value>Artículos</value>
+  </data>
+  <data name="Bitac" xml:space="preserve">
+    <value>Bitácora</value>
+  </data>
+  <data name="Bocho" xml:space="preserve">
+    <value>@Bocho.net 2019 Todos los derechos reservados </value>
+  </data>
+  <data name="CambiarPass" xml:space="preserve">
+    <value>Cambiar Contraseña</value>
+  </data>
+  <data name="Carruse" xml:space="preserve">
+    <value>Carrusell</value>
+  </data>
+  <data name="CategoriaId" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="CerrarSes" xml:space="preserve">
+    <value>Cerrar Sesión</value>
+  </data>
+  <data name="ColorId" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ConfEmail" xml:space="preserve">
+    <value>Confirme su correo electronico</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="CuentBloq" xml:space="preserve">
+    <value>Cuenta Bloqueada</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Deletethis" xml:space="preserve">
+    <value>¿Estás seguro de eliminar este registro?</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Correo electronico</value>
+  </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Este correo no esta registrado</value>
+  </data>
+  <data name="Estadist" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
+  <data name="Expiration" xml:space="preserve">
+    <value>Fecha de Expiración</value>
+  </data>
+  <data name="Faqs" xml:space="preserve">
+    <value>FAQS</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Olvidaste tu contrasena?</value>
+  </data>
+  <data name="ImageCar" xml:space="preserve">
+    <value>Imágenes Vehículo</value>
+  </data>
+  <data name="Imagen" xml:space="preserve">
+    <value>Imágenes</value>
+  </data>
+  <data name="IncorrectPass" xml:space="preserve">
+    <value>Passwoord Incorrecto</value>
+  </data>
+  <data name="InicioSesion" xml:space="preserve">
+    <value>Iniciar Sesión</value>
+  </data>
+  <data name="InvalidEmailAddress" xml:space="preserve">
+    <value>Seleccione un email valido</value>
+  </data>
+  <data name="LoginPaypal" xml:space="preserve">
+    <value>Inicie sesión en mi Paypal</value>
+  </data>
+  <data name="MarcaId" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="MarcarComoOferta" xml:space="preserve">
+    <value>Marcar como oferta</value>
+  </data>
+  <data name="MaxLenght" xml:space="preserve">
+    <value>La longitud del campo {0} no es válida</value>
+  </data>
+  <data name="MessError" xml:space="preserve">
+    <value>Error de Mensaje</value>
+  </data>
+  <data name="NameTitu" xml:space="preserve">
+    <value>Nombre del Titular</value>
+  </data>
+  <data name="NoCuenta" xml:space="preserve">
+    <value>No tienes cuenta?</value>
+  </data>
+  <data name="NombreVehiculo" xml:space="preserve">
+    <value>Nombre del Vehiculo</value>
+  </data>
+  <data name="NumTar" xml:space="preserve">
+    <value>Número de Tarjeta</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contrasena</value>
+  </data>
+  <data name="Pay" xml:space="preserve">
+    <value>Pagar</value>
+  </data>
+  <data name="Paypal" xml:space="preserve">
+    <value>Paypal</value>
+  </data>
+  <data name="PaypalEasy" xml:space="preserve">
+    <value>Paypal es la forma más fácil de pagar en línea</value>
+  </data>
+  <data name="Placeholder" xml:space="preserve">
+    <value>Escribe tu contraseña</value>
+  </data>
+  <data name="PlaceholderEmail" xml:space="preserve">
+    <value>Escribe tu correo electronico</value>
+  </data>
+  <data name="PrecioCompra" xml:space="preserve">
+    <value>Precio de compra</value>
+  </data>
+  <data name="PrecioOFerta" xml:space="preserve">
+    <value>Precio oferta</value>
+  </data>
+  <data name="PrecioVenta" xml:space="preserve">
+    <value>Precio de venta</value>
+  </data>
+  <data name="PreguntFrec" xml:space="preserve">
+    <value>Preguntas Frecuentes</value>
+  </data>
+  <data name="Range" xml:space="preserve">
+    <value>El campo {0} no se encuentra en un rango valido</value>
+  </data>
+  <data name="RecordarPass" xml:space="preserve">
+    <value>Recuerdame</value>
+  </data>
+  <data name="RegisActivity" xml:space="preserve">
+    <value>Registro de Actividad</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Registraar" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
+  <data name="Registrate" xml:space="preserve">
+    <value>Registrarse</value>
+  </data>
+  <data name="RegreList" xml:space="preserve">
+    <value>Regresar a la lista</value>
+  </data>
+  <data name="Regresar" xml:space="preserve">
+    <value>Regresar</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>El campo {0} es requerido</value>
+  </data>
+  <data name="RestablecerPass" xml:space="preserve">
+    <value>Restablecimiento de la contraseña </value>
+  </data>
+  <data name="RolId" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="SexoId" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
+  <data name="Tarjeta" xml:space="preserve">
+    <value>Tarjeta de Credito/Debito</value>
+  </data>
+  <data name="TransBanca" xml:space="preserve">
+    <value>Transferencia Bancaria</value>
+  </data>
+  <data name="TransmisionId" xml:space="preserve">
+    <value>Transmision</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Vehiculos" xml:space="preserve">
+    <value>Vehículos</value>
+  </data>
+</root>

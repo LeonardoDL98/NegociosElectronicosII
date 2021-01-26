@@ -1,0 +1,54 @@
+﻿@{
+    List<System.Web.Mvc.SelectListItem> anios = (List<System.Web.Mvc.SelectListItem>)ViewBag.Anios;
+    List<System.Web.Mvc.SelectListItem> meses = (List<System.Web.Mvc.SelectListItem>)ViewBag.Meses;
+}
+
+<div class="card-header">
+    <h5 class="text-danger">Los mas buscados</h5>
+    <br />
+    <div class="row">
+        <div class="col-md-6">
+            <label>Mes</label>
+            <select class="form-control" id="MesesLoMasBuscados">
+                @foreach (var item in meses)
+                {
+                    <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Anios</label>
+            <select class="form-control" id="AniosLoMasBuscados">
+                @foreach (var item in anios)
+                {
+                    <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<div class="card-body" id="LosMasBuscadosDetalle">
+    <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_LosMasBuscadosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
+
+        $('#MesesLoMasBuscados').change(function () {
+            Cargar_LosMasBuscadosDetalleParcial(Number($('#MesesLoMasBuscados').val()),Number($('#AniosLoMasBuscados').val()));
+        });
+
+        $('#AniosLoMasBuscados').change(function () {
+            Cargar_LosMasBuscadosDetalleParcial(Number($('#MesesLoMasBuscados').val()),Number($('#AniosLoMasBuscados').val()));
+        });
+    });
+
+    function Cargar_LosMasBuscadosDetalleParcial(Mes, Anio)
+    {
+        $('#LosMasBuscadosDetalle').empty();
+        $('#LosMasBuscadosDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#LosMasBuscadosDetalle').load('@Url.Action("LosMasBuscadosDetalle", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
+        });
+    }
+</script>

@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Confirm";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@if (ViewBag.IsConfirmValid)
+{
+
+    <div class="card">
+        <div class="card-header">
+            <h3 style="color:black">Ingresa nueva contraseña</h3>
+            <div class="d-flex justify-content-end social_icon">
+                <span><i class="fab fa-facebook-square"></i></span>
+                <span><i class="fab fa-google-plus-square"></i></span>
+                <span><i class="fab fa-twitter-square"></i></span>
+            </div>
+        </div>
+        <div class="card-body">
+           
+            <div class="input-group form-group">
+                <div class="wrap-input100 validate-input m-b-10" data-validate="Agregue nueva contrasena">
+                    <input id="newPass" class="input100" type="password" name="username" placeholder="Agregue nueva contrasena">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
+            </div>
+                
+            <div class="input-group form-group">
+                <div class="wrap-input100 validate-input m-b-10" data-validate="Confirme contrasena">
+                    <input id="ConfirmPass" class="input100" type="password" name="username" placeholder="Confirme contrasena">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <div class="container-login100-form-btn p-t-10">
+                    <button class="login100-form-btn" id="btnChangePassword"> Cambiar contrasena </button>
+                </div>
+            </div>
+        </div> 
+   </div>
+}
+<div class="text-center w-full p-t-25 p-b-230">
+    <a href="@Url.Action("Index","Login")" class="txt1">
+        Regresar al login
+    </a>
+</div>
+
+@*<div class="text-center w-full">
+        <a class="txt1" href="#">
+            Create new account
+            <i class="fa fa-long-arrow-right"></i>
+        </a>
+    </div>*@
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        @if (!ViewBag.IsConfirmValid)
+        {
+            @:alert('El email seleccionado ya ha caducado, solicite una nueva contrasena');
+            @:window.location.href = '@Url.Action("Index", "Login")';
+        }
+        else if (ViewBag.IsConfirmed) {
+            @:alert('Usted ya ha confirmado con este email');
+            @:window.location.href = '@Url.Action("Index", "Login")';
+        }
+
+        $('#btnChangePassword').click(function () {
+
+    if ($('#newPass').val() == "" || $('#newPass').val() == undefined || $('#newPass').val() == null) {
+                alert('Agregue la nueva contrasena.');
+                return false;
+            }
+
+            if ($('#ConfirmPass').val() == "" || $('#ConfirmPass').val() == undefined || $('#ConfirmPass').val() == null) {
+                alert('Confirme el password.');
+                return false;
+            }
+
+            if ($('#newPass').val() != $('#ConfirmPass').val())
+            {
+                alert('Las contrasenas no coinciden');
+                return false;
+            }
+
+            //fnLoader();
+
+            $.ajax({
+                url: '@Url.Action("ChangePass", "Login")',
+                data: { newPass: $('#newPass').val(), ID: @ViewBag.ID },
+                type: 'POST',
+                success: function (response) {
+                    //$.unblockUI();
+                    if (response.Success){
+                        alert('Su contrasena fue modificada correctamente');
+                        window.location.href = '@Url.Action("Index","Login")';
+                    }
+                    else
+                        alert('Ha ocurrido un error');
+                },
+                error: function () {
+                    alert('Ha ocurrido un error');
+                }
+            });
+        });
+    });
+</script>

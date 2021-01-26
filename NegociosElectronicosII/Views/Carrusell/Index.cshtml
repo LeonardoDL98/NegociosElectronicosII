@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Carrusel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.Carruse</h2>
+
+<p>
+    @Html.ActionLink(Recursos.Register, "Create")
+</p>
+<table class="table dt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Posicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Texto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreArchivo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Texto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extension)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreArchivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.ActionLink(Recursos.Edit, "Edit", new { id=item.CarruselId }) |
+                    @Html.ActionLink(Recursos.Details, "Details", new { id=item.CarruselId }) |
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id=item.CarruselId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

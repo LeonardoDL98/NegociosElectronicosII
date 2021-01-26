@@ -1,0 +1,78 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_VehiculoImagen>
+<div class="col-md-3-24"> <strong>Filtrado por:</strong> </div> <!-- col.// -->
+<div class="col-md-21-24">
+    <ul class="list-inline">
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">   Marca </a>
+            <div class="dropdown-menu p-3" style="max-width:400px;" >
+                @foreach (var item in (List<NegociosElectronicosII.Models.NE_Marca>)ViewBag.Marcas)
+                {
+                    <label class="form-check">
+                        <a href="#">
+                            <input type="checkbox" class="form-check-input marca_auto" value="@item.MarcaId" @(ViewBag.ID_Marca != null && ViewBag.ID_Marca == item.MarcaId? "checked": String.Empty)>@item.Marca
+                        </a>
+                    </label>
+                }
+
+            </div> <!-- dropdown-menu.// -->
+        </li>
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Categoría</a>
+            <div class="dropdown-menu p-3" style="max-width:400px;">
+                @foreach (var item in (List<NegociosElectronicosII.Models.NE_Categoria>)ViewBag.Categoria)
+                {
+                    <label class="form-check">
+                        <a href="#">
+                            <input type="checkbox" class="form-check-input categoria_auto" value="@item.CategoriaId" @(ViewBag.ID_Categoria != null && ViewBag.ID_Categoria== item.CategoriaId? "checked": String.Empty)>@item.Categoria
+                        </a>
+                    </label>
+                }
+            </div> <!-- dropdown-menu.// -->
+        </li>
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Color</a>
+            <div class="dropdown-menu p-3" style="max-width:400px;">
+                @foreach (var item in (List<NegociosElectronicosII.Models.NE_Color>)ViewBag.Color)
+                {
+                    <label class="form-check">
+                        <a href="#">
+                            <input type="checkbox" class="form-check-input color_auto" value="@item.ColorId">@item.Color
+                        </a>
+                    </label>
+                }
+            </div> <!-- dropdown-menu.// -->
+        </li>
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Transmision</a>
+            <div class="dropdown-menu p-3" style="max-width:400px;">
+                @foreach (var item in (List<NegociosElectronicosII.Models.NE_Transmision>)ViewBag.Transmision)
+                {
+                    <label class="form-check">
+                        <a href="#">
+                            <input type="checkbox" class="form-check-input transmision_auto" value="@item.TransmisionId">@item.Transmision
+                        </a>
+                    </label>
+                }
+            </div> <!-- dropdown-menu.// -->
+        </li>
+        <li class="list-inline-item">
+            <div class="form-inline">
+                <label class="mr-2">Precio</label>
+                <input class="form-control form-control-sm" placeholder="Min" type="number" id="min_auto">
+                <span class="px-2"> - </span>
+                <input class="form-control form-control-sm" placeholder="Max" type="number" id="max_auto">
+                <button type="button" id="btnBuscar" class="btn btn-sm ml-2">Buscar</button>
+            </div>
+        </li>
+    </ul>
+</div> <!-- col.// -->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btnBuscar').click(function () {
+            fnPintarGridDeVehiculos(1);
+        });
+    });
+
+</script>

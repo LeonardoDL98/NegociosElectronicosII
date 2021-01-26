@@ -1,0 +1,50 @@
+﻿@model List<NegociosElectronicosII.Models.VentasGraficoModel>
+@{
+    int i = 0;
+}
+
+@foreach (var item in Model)
+{
+    if (i == 0)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+    else if (i == 1)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+    else if (i == 2)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+    else if (i == 3)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+    else if (i == 4)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+    else if (i == 5)
+    {
+        <label>@item.Objeto (Busquedas: @item.Cantidad)</label>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @(item.Porcentaje)%;" aria-valuenow="@item.Porcentaje" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    }
+}

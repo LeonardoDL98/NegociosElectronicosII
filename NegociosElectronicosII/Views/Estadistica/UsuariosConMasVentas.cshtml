@@ -1,0 +1,22 @@
+﻿@model List<NegociosElectronicosII.Models.UsuarioReporteModel>
+
+<article class="box">
+    <figure class="itemside">
+        <div class="aside align-self-center">
+            <span class="icon-wrap icon-md round bg-danger">
+                <i class="fa fa-sun white"></i>
+            </span>
+        </div>
+        <figcaption class="text-wrap">
+            <h5 class="title">Clientes que dejan mas ingresos</h5>
+            <p class="text-muted">
+                <ol>
+                    @foreach (var item in Model)
+                    {
+                        <li>@item.Usuario : @String.Format("{0:C2}",item.Total) </li>
+                    }
+                </ol>
+            </p>
+        </figcaption>
+    </figure> <!-- iconbox // -->
+</article> <!-- panel-lg.// -->

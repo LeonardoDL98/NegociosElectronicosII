@@ -1,0 +1,115 @@
+﻿@model NegociosElectronicosII.Models.LoginModel
+@{
+    ViewBag.Title = "LoginWithCode";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="form-row">
+            <div class="col form-group">
+                <h4 style="color:black">Inicio de sesion con codigo</h4>
+            </div>
+            <div class="col form-group">
+                <a href="@Url.Action("Index","Principal")" style="width:100px" class="float-right btn btn-outline-primary mt-1">@Recursos.Regresar</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            <div class="input-group form-group correoElectronico">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                @Html.EditorFor(x => x.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = Recursos.PlaceholderEmail } })
+
+            </div>
+            <br />
+            <div>
+                @Html.ValidationMessageFor(x => x.Email)
+            </div>
+            <div class="form-group correoElectronico">
+                <button type="button" id="btnSolicitarCodigo" class="btn float-right login_btn">Solicitar codigo</button>
+            </div>
+            <div class="input-group form-group Solicitado" style="display:none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        Se ha enviado un codigo a tu correo, en caso de no ser asi, da clic en reenviar codigo.
+                    </div>
+                    <div class="col-md-12">
+                        <input class="form-control" id="txtCodigo" />
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" id="btnReenviar">Reenviar</button>
+                        <button type="button" class="btn btn-primary" id="btnConfirmar">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            @Recursos.NoCuenta<p id="registro">@Html.ActionLink(Recursos.Registrate, "Create", "Registro")
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btnSolicitarCodigo,#btnReenviar').click(function () {
+            fnSolicitarCodigo();
+        });
+
+        $('#btnConfirmar').click(function () {
+            $.ajax({
+                url: '@Url.Action("ConfirmarCodigoLogin", "Login")',
+                data: { email: $('#Email').val(), codigo: $('#txtCodigo').val() },
+                type: 'POST',
+                success: function (response) {
+                    if (response.TipoMensaje == 1) 
+                        window.location.href = response.UrlAredireccionar;
+                    else 
+                        alert(response.Mensaje);
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+
+        });
+
+    });
+
+    function fnSolicitarCodigo() {
+        
+        if ($('#Email').val() == undefined || $('#Email').val() == null || $('#Email').val() == '') {
+            alert('el campo email esta vacio');
+            return false;
+        }
+        if (($('#Email').val()).indexOf('@@') == -1) {
+            alert('el campo email no es valido');
+            return false;
+        }
+
+        $.ajax({
+            url: '@Url.Action("SolicitarCodigo", "Login")',
+            data: { email: $('#Email').val() },
+            type: 'POST',
+            success: function (response) {
+                if (response.TipoMensaje == 1) {
+                    $('.correoElectronico').hide();
+                    $('.Solicitado').show();
+                }
+                else
+                    alert(response.Mensaje);
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,98 @@
+﻿
+
+@{
+    List<System.Web.Mvc.SelectListItem> anios = (List<System.Web.Mvc.SelectListItem>)ViewBag.Anios;
+    List<System.Web.Mvc.SelectListItem> meses = (List<System.Web.Mvc.SelectListItem>)ViewBag.Meses;
+}
+
+<article class="box">
+    <figure class="itemside">
+        <div class="aside align-self-center">
+            <span class="icon-wrap icon-md round bg-warning">
+                <i class="fa fa-user white"></i>
+            </span>
+        </div>
+        <figcaption class="text-wrap">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Info de los usuarios</div>
+                </div>
+                <div class="col-md-12">
+                    <label>Mes</label>
+                    <select class="form-control" id="MesesUsuarios">
+                        @foreach (var item in meses)
+                        {
+                            <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label>Anios</label>
+                    <select class="form-control" id="AniosUsuarios">
+                        @foreach (var item in anios)
+                        {
+                            <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div id="UsuariosParcialDetalle"></div>
+        </figcaption>
+    </figure> <!-- iconbox // -->
+</article> <!-- panel-lg.// -->
+
+@*<div class="card border-left-primary shadow h-100 py-2">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Vehiculos vendidos</div>
+            </div>
+            <div class="col-md-12">
+                <label>Mes</label>
+                <select class="form-control" id="MesesUsuarios">
+                    @foreach (var item in meses)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-12">
+                <label>Anios</label>
+                <select class="form-control" id="AniosUsuarios">
+                    @foreach (var item in anios)
+                    {
+                        <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" id="UsuariosParcialDetalle">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
+    </div>
+</div>*@
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        Cargar_FiltrosUsuariosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
+
+        $('#MesesUsuarios').change(function () {
+            Cargar_FiltrosUsuariosDetalleParcial(Number($('#MesesUsuarios').val()),Number($('#AniosUsuarios').val()));
+        });
+
+        $('#AniosUsuarios').change(function () {
+            Cargar_FiltrosUsuariosDetalleParcial(Number($('#MesesUsuarios').val()),Number($('#AniosUsuarios').val()));
+        });
+    });
+
+    function Cargar_FiltrosUsuariosDetalleParcial(Mes, Anio)
+    {
+        $('#UsuariosParcialDetalle').empty();
+        $('#UsuariosParcialDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#UsuariosParcialDetalle').load('@Url.Action("FiltrosUsuariosDetalleParcial", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
+        });
+    }
+</script>

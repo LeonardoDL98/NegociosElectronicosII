@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_FAQS>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>@Recursos.PreguntFrec</h2>
+
+<p>
+    @Html.ActionLink(Recursos.Registraar, "Create")
+</p>
+<table class="table dt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pregunta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Respuesta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Orden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pregunta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Respuesta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Orden)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.FAQId }) |
+                    @Html.ActionLink(Recursos.Details, "Details", new { id = item.FAQId }) |
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.FAQId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

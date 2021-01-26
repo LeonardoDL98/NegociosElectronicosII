@@ -1,0 +1,62 @@
+﻿
+<header class="section-heading heading-line">
+    <h4 class="title-section bg text-uppercase">Articulos</h4>
+</header>
+
+<div class="row" id="filtroArticulo"> </div> 
+<div id="gridArticulo"> </div>
+ 
+@*<div class="row">
+    <div class="col-md-12 text-center">
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+
+</div>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#filtroArticulo").load("@Url.Action("FiltroArticuloParcial","Principal")");
+        fnPintarGridDeArticulos(1);
+    });
+
+    function fnPintarGridDeArticulos(Pagina, busqueda) {
+        if (busqueda == null || busqueda == undefined)
+            busqueda = "";
+
+        var marcas_seleccionadas = [];
+        var colores_seleccionados = [];
+
+        $.each($('.marca_articulo'), function (i, item) {
+            if($(item).is(':checked'))
+                marcas_seleccionadas.push($(item).val());
+        });
+
+        $.each($('.color_articulo'), function (i, item) {
+            if ($(item).is(':checked'))
+                colores_seleccionados.push($(item).val());
+        });
+     
+        var datos= {
+            Pagina: Pagina,
+            Marcas: marcas_seleccionadas.length > 0 ? marcas_seleccionadas.join(',') : null,
+            Color: colores_seleccionados.length > 0 ? colores_seleccionados.join(',') : null,
+            PrecioFinal: $('#max_art').val() == "" || $('#max_art').val() == null || $('#max_art').val() == undefined ? -1 : Number($('#max_art').val()),
+            PrecioInicial: $('#min_art').val() == "" || $('#min_art').val() == null || $('#min_art').val() == undefined ? -1 : Number($('#min_art').val()),
+            Busqueda: busqueda
+        };
+        $("#gridArticulo").empty();
+        $("#gridArticulo").html('<img src="@(Url.Content("~/Imagenes/Cargador/loader4.gif"))"/>');
+        $("#gridArticulo").load("@Url.Action("GridArticuloParcial","Principal")",datos,function(){
+            
+        });
+    }
+
+</script>

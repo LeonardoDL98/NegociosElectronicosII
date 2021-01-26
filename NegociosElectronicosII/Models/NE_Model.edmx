@@ -1,0 +1,1888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NE_Accion">
+          <Key>
+            <PropertyRef Name="AccionId" />
+          </Key>
+          <Property Name="AccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Accion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_ArticuloVehiculoVisto">
+          <Key>
+            <PropertyRef Name="ID_ArticuloVehiculoVisto" />
+          </Key>
+          <Property Name="ID_ArticuloVehiculoVisto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" />
+          <Property Name="ID_Vehiculo" Type="int" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Autenticacion">
+          <Key>
+            <PropertyRef Name="AutenticacionId" />
+          </Key>
+          <Property Name="AutenticacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="Intentos" Type="int" Nullable="false" />
+          <Property Name="CuentaBloqueada" Type="bit" Nullable="false" />
+          <Property Name="UltimoInicioSesion" Type="datetime" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_AutenticacionConEmail">
+          <Key>
+            <PropertyRef Name="ID_AutenticacionConEmail" />
+          </Key>
+          <Property Name="ID_AutenticacionConEmail" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FechaDeSolicitud" Type="datetime" Nullable="false" />
+          <Property Name="FechaDeVencimiento" Type="datetime" Nullable="false" />
+          <Property Name="CodigoDeVerificacion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoConfirmado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Bitacora">
+          <Key>
+            <PropertyRef Name="BitacoraId" />
+          </Key>
+          <Property Name="BitacoraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccionId" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaDeRegistro" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Carrito">
+          <Key>
+            <PropertyRef Name="CarritoId" />
+          </Key>
+          <Property Name="CarritoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
+        </EntityType>
+        <EntityType Name="NE_Carrusel">
+          <Key>
+            <PropertyRef Name="CarruselId" />
+          </Key>
+          <Property Name="CarruselId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Posicion" Type="int" Nullable="false" />
+          <Property Name="Texto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="NombreArchivo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTemplate" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Encuesta">
+          <Key>
+            <PropertyRef Name="EncuestaId" />
+          </Key>
+          <Property Name="EncuestaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FechaDeCreacion" Type="datetime" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_FAQS">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pregunta" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuesta" Type="varchar(max)" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_ListaDeDeseos">
+          <Key>
+            <PropertyRef Name="ListadeDeseosId" />
+          </Key>
+          <Property Name="ListadeDeseosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
+        </EntityType>
+        <EntityType Name="NE_Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Producto">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+          <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="PrecioVenta" Type="money" Nullable="false" />
+          <Property Name="PrecioCompra" Type="money" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="PrecioOFerta" Type="money" Nullable="false" />
+          <Property Name="MarcarComoOferta" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_ProductoImagen">
+          <Key>
+            <PropertyRef Name="ProductoImagenId" />
+          </Key>
+          <Property Name="ProductoImagenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPasswordId" />
+          </Key>
+          <Property Name="RecoveryPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+          <Property Name="IsConfirmed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Sexo">
+          <Key>
+            <PropertyRef Name="SexoId" />
+          </Key>
+          <Property Name="SexoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sexo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BodyHtml" Type="varchar(max)" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_TipoPago">
+          <Key>
+            <PropertyRef Name="TipoPagoId" />
+          </Key>
+          <Property Name="TipoPagoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoPago" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Transmision">
+          <Key>
+            <PropertyRef Name="TransmisionId" />
+          </Key>
+          <Property Name="TransmisionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Transmision" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SexoId" Type="int" Nullable="false" />
+          <Property Name="Edad" Type="int" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CorreoElectronico" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="FechaDeRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NE_Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreVehiculo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoriaId" Type="int" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+          <Property Name="Modelo" Type="int" Nullable="false" />
+          <Property Name="TransmisionId" Type="int" Nullable="false" />
+          <Property Name="ColorId" Type="int" Nullable="false" />
+          <Property Name="PrecioVenta" Type="money" Nullable="false" />
+          <Property Name="PrecioCompra" Type="money" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="PrecioOFerta" Type="money" Nullable="false" />
+          <Property Name="MarcarComoOferta" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_VehiculoImagen">
+          <Key>
+            <PropertyRef Name="VehiculoImagenId" />
+          </Key>
+          <Property Name="VehiculoImagenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehiculoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Venta">
+          <Key>
+            <PropertyRef Name="VentaId" />
+          </Key>
+          <Property Name="VentaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="TipoPagoId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="TotalVenta" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_VentaDetalle">
+          <Key>
+            <PropertyRef Name="VentaDetalleId" />
+          </Key>
+          <Property Name="VentaDetalleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VentaId" Type="int" Nullable="false" />
+          <Property Name="VehiculoId" Type="int" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="CarritoProductoId_ProductoId">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
+          <End Role="NE_Carrito" Type="Self.NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarritoUserId_UserID">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_Carrito" Type="Self.NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarritoVehiculoId_VehiculoId">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
+          <End Role="NE_Carrito" Type="Self.NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosProductoId_ProductoId">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
+          <End Role="NE_ListaDeDeseos" Type="Self.NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosUsuarioId_UsuarioId">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_ListaDeDeseos" Type="Self.NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosVehiculoId_VehiculoId">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
+          <End Role="NE_ListaDeDeseos" Type="Self.NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetalleVentaId_VentaId">
+          <End Role="NE_Venta" Type="Self.NE_Venta" Multiplicity="1" />
+          <End Role="NE_VentaDetalle" Type="Self.NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Venta">
+              <PropertyRef Name="VentaId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="VentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccionId">
+          <End Role="NE_Accion" Type="Self.NE_Accion" Multiplicity="1" />
+          <End Role="NE_Bitacora" Type="Self.NE_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Accion">
+              <PropertyRef Name="AccionId" />
+            </Principal>
+            <Dependent Role="NE_Bitacora">
+              <PropertyRef Name="AccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoCategoriaId">
+          <End Role="NE_Categoria" Type="Self.NE_Categoria" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Categoria">
+              <PropertyRef Name="CategoriaId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="CategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoColorId">
+          <End Role="NE_Color" Type="Self.NE_Color" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoMarcaId">
+          <End Role="NE_Marca" Type="Self.NE_Marca" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColorId">
+          <End Role="NE_Color" Type="Self.NE_Color" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarcaId">
+          <End Role="NE_Marca" Type="Self.NE_Marca" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Producto">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Bitacora_Usuario">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_Bitacora" Type="Self.NE_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Bitacora">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_RolId">
+          <End Role="NE_Rol" Type="Self.NE_Rol" Multiplicity="1" />
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Sexo_NE_Usuario">
+          <End Role="NE_Sexo" Type="Self.NE_Sexo" Multiplicity="1" />
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Sexo">
+              <PropertyRef Name="SexoId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="SexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_VehiculoImagen_NE_Vehiculo">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="1" />
+          <End Role="NE_VehiculoImagen" Type="Self.NE_VehiculoImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_VehiculoImagen">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Venta_NE_TipoPago">
+          <End Role="NE_TipoPago" Type="Self.NE_TipoPago" Multiplicity="1" />
+          <End Role="NE_Venta" Type="Self.NE_Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_TipoPago">
+              <PropertyRef Name="TipoPagoId" />
+            </Principal>
+            <Dependent Role="NE_Venta">
+              <PropertyRef Name="TipoPagoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Venta_NE_Usuario">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_Venta" Type="Self.NE_Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Venta">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_imagen">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="1" />
+          <End Role="NE_ProductoImagen" Type="Self.NE_ProductoImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ProductoImagen">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recovery_User">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_RecoveryPassword" Type="Self.NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransmisionId">
+          <End Role="NE_Transmision" Type="Self.NE_Transmision" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Transmision">
+              <PropertyRef Name="TransmisionId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="TransmisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosId_Autenticacion">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_Autenticacion" Type="Self.NE_Autenticacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Autenticacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VentaProductoId_ProductoId">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
+          <End Role="NE_VentaDetalle" Type="Self.NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VentaVehiculo_IdVehiculo">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
+          <End Role="NE_VentaDetalle" Type="Self.NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A453B0_fabiancastanonModelStoreContainer">
+          <EntitySet Name="NE_Accion" EntityType="Self.NE_Accion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_ArticuloVehiculoVisto" EntityType="Self.NE_ArticuloVehiculoVisto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Autenticacion" EntityType="Self.NE_Autenticacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_AutenticacionConEmail" EntityType="Self.NE_AutenticacionConEmail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Bitacora" EntityType="Self.NE_Bitacora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Carrito" EntityType="Self.NE_Carrito" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Carrusel" EntityType="Self.NE_Carrusel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Categoria" EntityType="Self.NE_Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Color" EntityType="Self.NE_Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_EmailTemplate" EntityType="Self.NE_EmailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Encuesta" EntityType="Self.NE_Encuesta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_FAQS" EntityType="Self.NE_FAQS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_ListaDeDeseos" EntityType="Self.NE_ListaDeDeseos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Marca" EntityType="Self.NE_Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Producto" EntityType="Self.NE_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_ProductoImagen" EntityType="Self.NE_ProductoImagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_RecoveryPassword" EntityType="Self.NE_RecoveryPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Rol" EntityType="Self.NE_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Sexo" EntityType="Self.NE_Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Template" EntityType="Self.NE_Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_TipoPago" EntityType="Self.NE_TipoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Transmision" EntityType="Self.NE_Transmision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Usuario" EntityType="Self.NE_Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Vehiculo" EntityType="Self.NE_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_VehiculoImagen" EntityType="Self.NE_VehiculoImagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Venta" EntityType="Self.NE_Venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_VentaDetalle" EntityType="Self.NE_VentaDetalle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="CarritoProductoId_ProductoId" Association="Self.CarritoProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="CarritoUserId_UserID" Association="Self.CarritoUserId_UserID">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="CarritoVehiculoId_VehiculoId" Association="Self.CarritoVehiculoId_VehiculoId">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosProductoId_ProductoId" Association="Self.DeseosProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosUsuarioId_UsuarioId" Association="Self.DeseosUsuarioId_UsuarioId">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosVehiculoId_VehiculoId" Association="Self.DeseosVehiculoId_VehiculoId">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="DetalleVentaId_VentaId" Association="Self.DetalleVentaId_VentaId">
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccionId" Association="Self.FK_AccionId">
+            <End Role="NE_Accion" EntitySet="NE_Accion" />
+            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoCategoriaId" Association="Self.FK_AutoCategoriaId">
+            <End Role="NE_Categoria" EntitySet="NE_Categoria" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoColorId" Association="Self.FK_AutoColorId">
+            <End Role="NE_Color" EntitySet="NE_Color" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoMarcaId" Association="Self.FK_AutoMarcaId">
+            <End Role="NE_Marca" EntitySet="NE_Marca" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColorId" Association="Self.FK_ColorId">
+            <End Role="NE_Color" EntitySet="NE_Color" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarcaId" Association="Self.FK_MarcaId">
+            <End Role="NE_Marca" EntitySet="NE_Marca" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Producto" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Producto">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Bitacora_Usuario" Association="Self.FK_NE_Bitacora_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_RolId" Association="Self.FK_NE_RolId">
+            <End Role="NE_Rol" EntitySet="NE_Rol" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Sexo_NE_Usuario" Association="Self.FK_NE_Sexo_NE_Usuario">
+            <End Role="NE_Sexo" EntitySet="NE_Sexo" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_VehiculoImagen_NE_Vehiculo" Association="Self.FK_NE_VehiculoImagen_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Venta_NE_TipoPago" Association="Self.FK_NE_Venta_NE_TipoPago">
+            <End Role="NE_TipoPago" EntitySet="NE_TipoPago" />
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Venta_NE_Usuario" Association="Self.FK_NE_Venta_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_imagen" Association="Self.FK_Product_imagen">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ProductoImagen" EntitySet="NE_ProductoImagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recovery_User" Association="Self.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransmisionId" Association="Self.FK_TransmisionId">
+            <End Role="NE_Transmision" EntitySet="NE_Transmision" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="Self.FK_UsuariosId_Autenticacion">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Autenticacion" EntitySet="NE_Autenticacion" />
+          </AssociationSet>
+          <AssociationSet Name="VentaProductoId_ProductoId" Association="Self.VentaProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="VentaVehiculo_IdVehiculo" Association="Self.VentaVehiculo_IdVehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A453B0_fabiancastanonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_NE_Entitties" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NE_Accion" EntityType="DB_A453B0_fabiancastanonModel.NE_Accion" />
+          <EntitySet Name="NE_Autenticacion" EntityType="DB_A453B0_fabiancastanonModel.NE_Autenticacion" />
+          <EntitySet Name="NE_Bitacora" EntityType="DB_A453B0_fabiancastanonModel.NE_Bitacora" />
+          <EntitySet Name="NE_Carrusel" EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" />
+          <EntitySet Name="NE_Categoria" EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" />
+          <EntitySet Name="NE_Color" EntityType="DB_A453B0_fabiancastanonModel.NE_Color" />
+          <EntitySet Name="NE_EmailTemplate" EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" />
+          <EntitySet Name="NE_Encuesta" EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" />
+          <EntitySet Name="NE_FAQS" EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" />
+          <EntitySet Name="NE_Marca" EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" />
+          <EntitySet Name="NE_Producto" EntityType="DB_A453B0_fabiancastanonModel.NE_Producto" />
+          <EntitySet Name="NE_ProductoImagen" EntityType="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" />
+          <EntitySet Name="NE_RecoveryPassword" EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" />
+          <EntitySet Name="NE_Rol" EntityType="DB_A453B0_fabiancastanonModel.NE_Rol" />
+          <EntitySet Name="NE_Sexo" EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" />
+          <EntitySet Name="NE_Template" EntityType="DB_A453B0_fabiancastanonModel.NE_Template" />
+          <EntitySet Name="NE_Transmision" EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" />
+          <EntitySet Name="NE_Vehiculo" EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" />
+          <EntitySet Name="NE_VehiculoImagen" EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" />
+          <AssociationSet Name="FK_AccionId" Association="DB_A453B0_fabiancastanonModel.FK_AccionId">
+            <End Role="NE_Accion" EntitySet="NE_Accion" />
+            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoCategoriaId" Association="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId">
+            <End Role="NE_Categoria" EntitySet="NE_Categoria" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoColorId" Association="DB_A453B0_fabiancastanonModel.FK_AutoColorId">
+            <End Role="NE_Color" EntitySet="NE_Color" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ColorId" Association="DB_A453B0_fabiancastanonModel.FK_ColorId">
+            <End Role="NE_Color" EntitySet="NE_Color" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoMarcaId" Association="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId">
+            <End Role="NE_Marca" EntitySet="NE_Marca" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MarcaId" Association="DB_A453B0_fabiancastanonModel.FK_MarcaId">
+            <End Role="NE_Marca" EntitySet="NE_Marca" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_imagen" Association="DB_A453B0_fabiancastanonModel.FK_Product_imagen">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ProductoImagen" EntitySet="NE_ProductoImagen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TransmisionId" Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId">
+            <End Role="NE_Transmision" EntitySet="NE_Transmision" />
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_VehiculoImagen_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
+          </AssociationSet>
+          <EntitySet Name="NE_Carrito" EntityType="DB_A453B0_fabiancastanonModel.NE_Carrito" />
+          <EntitySet Name="NE_ListaDeDeseos" EntityType="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" />
+          <AssociationSet Name="CarritoProductoId_ProductoId" Association="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="CarritoVehiculoId_VehiculoId" Association="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosProductoId_ProductoId" Association="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosVehiculoId_VehiculoId" Association="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <EntitySet Name="NE_TipoPago" EntityType="DB_A453B0_fabiancastanonModel.NE_TipoPago" />
+          <EntitySet Name="NE_Venta" EntityType="DB_A453B0_fabiancastanonModel.NE_Venta" />
+          <EntitySet Name="NE_VentaDetalle" EntityType="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" />
+          <AssociationSet Name="VentaProductoId_ProductoId" Association="DB_A453B0_fabiancastanonModel.VentaProductoId_ProductoId">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Venta_NE_TipoPago" Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_TipoPago">
+            <End Role="NE_TipoPago" EntitySet="NE_TipoPago" />
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+          </AssociationSet>
+          <AssociationSet Name="VentaVehiculo_IdVehiculo" Association="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="DetalleVentaId_VentaId" Association="DB_A453B0_fabiancastanonModel.DetalleVentaId_VentaId">
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+            <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
+          </AssociationSet>
+          <EntitySet Name="NE_ArticuloVehiculoVisto" EntityType="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" />
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Producto" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <EntitySet Name="NE_Usuario" EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" />
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Autenticacion" EntitySet="NE_Autenticacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Bitacora_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="CarritoUserId_UserID" Association="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosUsuarioId_UsuarioId" Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recovery_User" Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_RolId" Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId">
+            <End Role="NE_Rol" EntitySet="NE_Rol" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Sexo_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario">
+            <End Role="NE_Sexo" EntitySet="NE_Sexo" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Venta_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+          </AssociationSet>
+          <EntitySet Name="NE_AutenticacionConEmail" EntityType="DB_A453B0_fabiancastanonModel.NE_AutenticacionConEmail" />
+          </EntityContainer>
+        <EntityType Name="NE_Accion">
+          <Key>
+            <PropertyRef Name="AccionId" />
+          </Key>
+          <Property Name="AccionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Accion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Bitacora" Relationship="DB_A453B0_fabiancastanonModel.FK_AccionId" FromRole="NE_Accion" ToRole="NE_Bitacora" />
+        </EntityType>
+        <EntityType Name="NE_Autenticacion">
+          <Key>
+            <PropertyRef Name="AutenticacionId" />
+          </Key>
+          <Property Name="AutenticacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="Intentos" Type="Int32" Nullable="false" />
+          <Property Name="CuentaBloqueada" Type="Boolean" Nullable="false" />
+          <Property Name="UltimoInicioSesion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" FromRole="NE_Autenticacion" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_Bitacora">
+          <Key>
+            <PropertyRef Name="BitacoraId" />
+          </Key>
+          <Property Name="BitacoraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccionId" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaDeRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Accion" Relationship="DB_A453B0_fabiancastanonModel.FK_AccionId" FromRole="NE_Bitacora" ToRole="NE_Accion" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" FromRole="NE_Bitacora" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_Carrusel">
+          <Key>
+            <PropertyRef Name="CarruselId" />
+          </Key>
+          <Property Name="CarruselId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Posicion" Type="Int32" Nullable="false" />
+          <Property Name="Texto" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NombreArchivo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Categoria">
+          <Key>
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId" FromRole="NE_Categoria" ToRole="NE_Vehiculo" />
+        </EntityType>
+        <EntityType Name="NE_Color">
+          <Key>
+            <PropertyRef Name="ColorId" />
+          </Key>
+          <Property Name="ColorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Color" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoColorId" FromRole="NE_Color" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_ColorId" FromRole="NE_Color" ToRole="NE_Producto" />
+        </EntityType>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Encuesta">
+          <Key>
+            <PropertyRef Name="EncuestaId" />
+          </Key>
+          <Property Name="EncuestaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FechaDeCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_FAQS">
+          <Key>
+            <PropertyRef Name="FAQId" />
+          </Key>
+          <Property Name="FAQId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pregunta" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Respuesta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId" FromRole="NE_Marca" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_MarcaId" FromRole="NE_Marca" ToRole="NE_Producto" />
+        </EntityType>
+        <EntityType Name="NE_Producto">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="PrecioVenta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PrecioCompra" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="PrecioOFerta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MarcarComoOferta" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NE_Color" Relationship="DB_A453B0_fabiancastanonModel.FK_ColorId" FromRole="NE_Producto" ToRole="NE_Color" />
+          <NavigationProperty Name="NE_Marca" Relationship="DB_A453B0_fabiancastanonModel.FK_MarcaId" FromRole="NE_Producto" ToRole="NE_Marca" />
+          <NavigationProperty Name="NE_ProductoImagen" Relationship="DB_A453B0_fabiancastanonModel.FK_Product_imagen" FromRole="NE_Producto" ToRole="NE_ProductoImagen" />
+          <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_Carrito" />
+          <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_ListaDeDeseos" />
+          <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.VentaProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto" FromRole="NE_Producto" ToRole="NE_ArticuloVehiculoVisto" />
+        </EntityType>
+        <EntityType Name="NE_ProductoImagen">
+          <Key>
+            <PropertyRef Name="ProductoImagenId" />
+          </Key>
+          <Property Name="ProductoImagenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProductoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_Product_imagen" FromRole="NE_ProductoImagen" ToRole="NE_Producto" />
+        </EntityType>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPasswordId" />
+          </Key>
+          <Property Name="RecoveryPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_RolId" FromRole="NE_Rol" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_Sexo">
+          <Key>
+            <PropertyRef Name="SexoId" />
+          </Key>
+          <Property Name="SexoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sexo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" FromRole="NE_Sexo" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_Template">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="BodyHtml" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Transmision">
+          <Key>
+            <PropertyRef Name="TransmisionId" />
+          </Key>
+          <Property Name="TransmisionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Transmision" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_TransmisionId" FromRole="NE_Transmision" ToRole="NE_Vehiculo" />
+        </EntityType>
+        <EntityType Name="NE_Vehiculo">
+          <Key>
+            <PropertyRef Name="VehiculoId" />
+          </Key>
+          <Property Name="VehiculoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreVehiculo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <Property Name="Modelo" Type="Int32" Nullable="false" />
+          <Property Name="TransmisionId" Type="Int32" Nullable="false" />
+          <Property Name="ColorId" Type="Int32" Nullable="false" />
+          <Property Name="PrecioVenta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="PrecioCompra" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="PrecioOFerta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="MarcarComoOferta" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NE_Categoria" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId" FromRole="NE_Vehiculo" ToRole="NE_Categoria" />
+          <NavigationProperty Name="NE_Color" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoColorId" FromRole="NE_Vehiculo" ToRole="NE_Color" />
+          <NavigationProperty Name="NE_Marca" Relationship="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId" FromRole="NE_Vehiculo" ToRole="NE_Marca" />
+          <NavigationProperty Name="NE_Transmision" Relationship="DB_A453B0_fabiancastanonModel.FK_TransmisionId" FromRole="NE_Vehiculo" ToRole="NE_Transmision" />
+          <NavigationProperty Name="NE_VehiculoImagen" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" FromRole="NE_Vehiculo" ToRole="NE_VehiculoImagen" />
+          <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" FromRole="NE_Vehiculo" ToRole="NE_Carrito" />
+          <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" FromRole="NE_Vehiculo" ToRole="NE_ListaDeDeseos" />
+          <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo" FromRole="NE_Vehiculo" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" FromRole="NE_Vehiculo" ToRole="NE_ArticuloVehiculoVisto" />
+        </EntityType>
+        <EntityType Name="NE_VehiculoImagen">
+          <Key>
+            <PropertyRef Name="VehiculoImagenId" />
+          </Key>
+          <Property Name="VehiculoImagenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VehiculoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" FromRole="NE_VehiculoImagen" ToRole="NE_Vehiculo" />
+        </EntityType>
+        <Association Name="FK_AccionId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Accion" Role="NE_Accion" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Bitacora" Role="NE_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Accion">
+              <PropertyRef Name="AccionId" />
+            </Principal>
+            <Dependent Role="NE_Bitacora">
+              <PropertyRef Name="AccionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoCategoriaId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Categoria" Role="NE_Categoria" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Categoria">
+              <PropertyRef Name="CategoriaId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="CategoriaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoColorId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Color" Role="NE_Color" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ColorId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Color" Role="NE_Color" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Color">
+              <PropertyRef Name="ColorId" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="ColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoMarcaId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Marca" Role="NE_Marca" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MarcaId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Marca" Role="NE_Marca" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_imagen">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" Role="NE_ProductoImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ProductoImagen">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransmisionId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Transmision" Role="NE_Transmision" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Transmision">
+              <PropertyRef Name="TransmisionId" />
+            </Principal>
+            <Dependent Role="NE_Vehiculo">
+              <PropertyRef Name="TransmisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_VehiculoImagen_NE_Vehiculo">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Role="NE_VehiculoImagen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_VehiculoImagen">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_Carrito">
+          <Key>
+            <PropertyRef Name="CarritoId" />
+          </Key>
+          <Property Name="CarritoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" FromRole="NE_Carrito" ToRole="NE_Producto" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" FromRole="NE_Carrito" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Carrito" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_ListaDeDeseos">
+          <Key>
+            <PropertyRef Name="ListadeDeseosId" />
+          </Key>
+          <Property Name="ListadeDeseosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Producto" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_ListaDeDeseos" ToRole="NE_Usuario" />
+        </EntityType>
+        <Association Name="CarritoProductoId_ProductoId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarritoVehiculoId_VehiculoId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosProductoId_ProductoId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosVehiculoId_VehiculoId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_TipoPago">
+          <Key>
+            <PropertyRef Name="TipoPagoId" />
+          </Key>
+          <Property Name="TipoPagoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoPago" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_TipoPago" FromRole="NE_TipoPago" ToRole="NE_Venta" />
+        </EntityType>
+        <EntityType Name="NE_Venta">
+          <Key>
+            <PropertyRef Name="VentaId" />
+          </Key>
+          <Property Name="VentaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="TipoPagoId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TotalVenta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="NE_TipoPago" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_TipoPago" FromRole="NE_Venta" ToRole="NE_TipoPago" />
+          <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.DetalleVentaId_VentaId" FromRole="NE_Venta" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Venta" ToRole="NE_Usuario" />
+        </EntityType>
+        <EntityType Name="NE_VentaDetalle">
+          <Key>
+            <PropertyRef Name="VentaDetalleId" />
+          </Key>
+          <Property Name="VentaDetalleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VentaId" Type="Int32" Nullable="false" />
+          <Property Name="VehiculoId" Type="Int32" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.VentaProductoId_ProductoId" FromRole="NE_VentaDetalle" ToRole="NE_Producto" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo" FromRole="NE_VentaDetalle" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.DetalleVentaId_VentaId" FromRole="NE_VentaDetalle" ToRole="NE_Venta" />
+        </EntityType>
+        <Association Name="VentaProductoId_ProductoId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" Role="NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Venta_NE_TipoPago">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_TipoPago" Role="NE_TipoPago" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Venta" Role="NE_Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_TipoPago">
+              <PropertyRef Name="TipoPagoId" />
+            </Principal>
+            <Dependent Role="NE_Venta">
+              <PropertyRef Name="TipoPagoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VentaVehiculo_IdVehiculo">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" Role="NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="VehiculoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetalleVentaId_VentaId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Venta" Role="NE_Venta" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" Role="NE_VentaDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Venta">
+              <PropertyRef Name="VentaId" />
+            </Principal>
+            <Dependent Role="NE_VentaDetalle">
+              <PropertyRef Name="VentaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_ArticuloVehiculoVisto">
+          <Key>
+            <PropertyRef Name="ID_ArticuloVehiculoVisto" />
+          </Key>
+          <Property Name="ID_ArticuloVehiculoVisto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Producto" Type="Int32" />
+          <Property Name="ID_Vehiculo" Type="Int32" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Producto" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Usuario" />
+        </EntityType>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Producto">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SexoId" Type="Int32" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_ArticuloVehiculoVisto" />
+          <NavigationProperty Name="NE_Autenticacion" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" FromRole="NE_Usuario" ToRole="NE_Autenticacion" />
+          <NavigationProperty Name="NE_Bitacora" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" FromRole="NE_Usuario" ToRole="NE_Bitacora" />
+          <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Usuario" ToRole="NE_Carrito" />
+          <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_Usuario" ToRole="NE_ListaDeDeseos" />
+          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
+          <NavigationProperty Name="NE_Rol" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
+          <NavigationProperty Name="NE_Sexo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
+          <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Venta" />
+        </EntityType>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuariosId_Autenticacion">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Role="NE_Autenticacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Autenticacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Bitacora_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Bitacora" Role="NE_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Bitacora">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarritoUserId_UserID">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosUsuarioId_UsuarioId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recovery_User">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_RolId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Rol" Role="NE_Rol" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Sexo_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Sexo" Role="NE_Sexo" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Sexo">
+              <PropertyRef Name="SexoId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="SexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Venta_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Venta" Role="NE_Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Venta">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_AutenticacionConEmail">
+          <Key>
+            <PropertyRef Name="ID_AutenticacionConEmail" />
+          </Key>
+          <Property Name="ID_AutenticacionConEmail" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FechaDeSolicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaDeVencimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CodigoDeVerificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoConfirmado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A453B0_fabiancastanonModelStoreContainer" CdmEntityContainer="DB_NE_Entitties">
+          <EntitySetMapping Name="NE_Accion">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Accion">
+              <MappingFragment StoreEntitySet="NE_Accion">
+                <ScalarProperty Name="Accion" ColumnName="Accion" />
+                <ScalarProperty Name="AccionId" ColumnName="AccionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Autenticacion">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Autenticacion">
+              <MappingFragment StoreEntitySet="NE_Autenticacion">
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="UltimoInicioSesion" ColumnName="UltimoInicioSesion" />
+                <ScalarProperty Name="CuentaBloqueada" ColumnName="CuentaBloqueada" />
+                <ScalarProperty Name="Intentos" ColumnName="Intentos" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="AutenticacionId" ColumnName="AutenticacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Bitacora">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Bitacora">
+              <MappingFragment StoreEntitySet="NE_Bitacora">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="AccionId" ColumnName="AccionId" />
+                <ScalarProperty Name="BitacoraId" ColumnName="BitacoraId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Carrusel">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Carrusel">
+              <MappingFragment StoreEntitySet="NE_Carrusel">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="CarruselId" ColumnName="CarruselId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Categoria">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Categoria">
+              <MappingFragment StoreEntitySet="NE_Categoria">
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Color">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Color">
+              <MappingFragment StoreEntitySet="NE_Color">
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_EmailTemplate">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_EmailTemplate">
+              <MappingFragment StoreEntitySet="NE_EmailTemplate">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailTemplate" ColumnName="EmailTemplate" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Encuesta">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Encuesta">
+              <MappingFragment StoreEntitySet="NE_Encuesta">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaDeCreacion" ColumnName="FechaDeCreacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EncuestaId" ColumnName="EncuestaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_FAQS">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_FAQS">
+              <MappingFragment StoreEntitySet="NE_FAQS">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+                <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+                <ScalarProperty Name="FAQId" ColumnName="FAQId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Marca">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Marca">
+              <MappingFragment StoreEntitySet="NE_Marca">
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Producto">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Producto">
+              <MappingFragment StoreEntitySet="NE_Producto">
+                <ScalarProperty Name="MarcarComoOferta" ColumnName="MarcarComoOferta" />
+                <ScalarProperty Name="PrecioOFerta" ColumnName="PrecioOFerta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_ProductoImagen">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_ProductoImagen">
+              <MappingFragment StoreEntitySet="NE_ProductoImagen">
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="ProductoImagenId" ColumnName="ProductoImagenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_RecoveryPassword">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
+              <MappingFragment StoreEntitySet="NE_RecoveryPassword">
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecoveryPasswordId" ColumnName="RecoveryPasswordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Rol">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Rol">
+              <MappingFragment StoreEntitySet="NE_Rol">
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Sexo">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Sexo">
+              <MappingFragment StoreEntitySet="NE_Sexo">
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Template">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Template">
+              <MappingFragment StoreEntitySet="NE_Template">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="BodyHtml" ColumnName="BodyHtml" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Transmision">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Transmision">
+              <MappingFragment StoreEntitySet="NE_Transmision">
+                <ScalarProperty Name="Transmision" ColumnName="Transmision" />
+                <ScalarProperty Name="TransmisionId" ColumnName="TransmisionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Vehiculo">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Vehiculo">
+              <MappingFragment StoreEntitySet="NE_Vehiculo">
+                <ScalarProperty Name="MarcarComoOferta" ColumnName="MarcarComoOferta" />
+                <ScalarProperty Name="PrecioOFerta" ColumnName="PrecioOFerta" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
+                <ScalarProperty Name="ColorId" ColumnName="ColorId" />
+                <ScalarProperty Name="TransmisionId" ColumnName="TransmisionId" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+                <ScalarProperty Name="NombreVehiculo" ColumnName="NombreVehiculo" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_VehiculoImagen">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen">
+              <MappingFragment StoreEntitySet="NE_VehiculoImagen">
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="VehiculoImagenId" ColumnName="VehiculoImagenId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Carrito">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Carrito">
+              <MappingFragment StoreEntitySet="NE_Carrito">
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="CarritoId" ColumnName="CarritoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_ListaDeDeseos">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos">
+              <MappingFragment StoreEntitySet="NE_ListaDeDeseos">
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="ListadeDeseosId" ColumnName="ListadeDeseosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_TipoPago">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_TipoPago">
+              <MappingFragment StoreEntitySet="NE_TipoPago">
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="TipoPagoId" ColumnName="TipoPagoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Venta">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Venta">
+              <MappingFragment StoreEntitySet="NE_Venta">
+                <ScalarProperty Name="TotalVenta" ColumnName="TotalVenta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoPagoId" ColumnName="TipoPagoId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="VentaId" ColumnName="VentaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_VentaDetalle">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_VentaDetalle">
+              <MappingFragment StoreEntitySet="NE_VentaDetalle">
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
+                <ScalarProperty Name="VentaId" ColumnName="VentaId" />
+                <ScalarProperty Name="VentaDetalleId" ColumnName="VentaDetalleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_ArticuloVehiculoVisto">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto">
+              <MappingFragment StoreEntitySet="NE_ArticuloVehiculoVisto">
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="ID_Vehiculo" ColumnName="ID_Vehiculo" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="ID_ArticuloVehiculoVisto" ColumnName="ID_ArticuloVehiculoVisto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Usuario">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Usuario">
+              <MappingFragment StoreEntitySet="NE_Usuario">
+                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_AutenticacionConEmail">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_AutenticacionConEmail">
+              <MappingFragment StoreEntitySet="NE_AutenticacionConEmail">
+                <ScalarProperty Name="CodigoConfirmado" ColumnName="CodigoConfirmado" />
+                <ScalarProperty Name="CodigoDeVerificacion" ColumnName="CodigoDeVerificacion" />
+                <ScalarProperty Name="FechaDeVencimiento" ColumnName="FechaDeVencimiento" />
+                <ScalarProperty Name="FechaDeSolicitud" ColumnName="FechaDeSolicitud" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID_AutenticacionConEmail" ColumnName="ID_AutenticacionConEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

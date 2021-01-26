@@ -1,0 +1,106 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Vehiculo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>@Recursos.Vehiculos</h2>
+
+<p>
+    @Html.ActionLink(Recursos.Create, "Create")
+</p>
+<table class="table dt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Modelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreVehiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Categoria.Categoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Color.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Marca.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Transmision.Transmision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarcarComoOferta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioOFerta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreVehiculo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Categoria.Categoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Color.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Marca.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Transmision.Transmision)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarcarComoOferta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioOFerta)
+                </td>
+                <td>
+                    @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.VehiculoId }) |
+                    @Html.ActionLink(Recursos.Details, "Details", new { id = item.VehiculoId }) |
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.VehiculoId })|
+                    @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.VehiculoId })|
+                    @Html.ActionLink("Eliminar imagenes", "DeleteImages", new { id = item.VehiculoId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
